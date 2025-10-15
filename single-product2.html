@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Health Coach - Product Details</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+      /* تأكيد ظهور الهيرو */
+      .hero-wrap {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .hero-wrap .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .slider-text {
+        position: relative;
+        z-index: 1;
+      }
+      .breadcrumbs {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .breadcrumbs a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .breadcrumbs span {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .hero-wrap h1 {
+        color: #fff;
+        font-size: 40px;
+        font-weight: 700;
+      }
+      
+      /* تنسيقات تفاصيل المنتج */
+      .product-details {
+        padding: 50px 0;
+      }
+      .product-image {
+        width: 100%;
+        border-radius: 10px;
+        margin-bottom: 20px;
+      }
+      .product-info {
+        padding: 20px;
+      }
+      .product-title {
+        font-size: 28px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .product-price {
+        font-size: 24px;
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+      
+      /* تنسيقات خيارات التنسيق/النوع */
+      .format-options, .access-options, .level-options {
+        margin-bottom: 20px;
+      }
+      .format-btn, .access-btn, .level-btn {
+        background: #fff;
+        border: 1px solid #ddd;
+        padding: 8px 15px;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .format-btn.active, .access-btn.active, .level-btn.active {
+        background: #FFCFEF;
+        color: #2A3335;
+        border-color: #2A3335;
+      }
+      .format-btn:hover, .access-btn:hover, .level-btn:hover {
+        background: #FFCFEF;
+      }
+      
+      /* تخصيص أزرار المستوى */
+      .level-btn {
+        background: #FFCFEF;
+        color: #2A3335;
+        border: 1px solid #2A3335;
+      }
+      .level-btn:hover {
+        background: #f5bde0;
+      }
+      
+      .quantity-selector {
+        display: none; /* إخفاء عداد الكمية */
+      }
+      
+      .add-to-cart-btn {
+        background: #FFCFEF;
+        color: #2A3335;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+      }
+      
+      /* سهم العودة إلى المتجر */
+      .back-to-shop {
+        margin-top: 20px;
+        display: inline-flex;
+        align-items: center;
+        color: #D9A299;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+      .back-to-shop:hover {
+        color: #D9A299;
+        transform: translateX(-5px);
+      }
+      .back-to-shop i {
+        margin-right: 8px;
+        font-size: 18px;
+      }
+      
+      /* تنسيقات السلة والمفضلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني */
+      .cart-dropdown, .favorites-dropdown {
+        position: relative;
+      }
+      .cart-content, .favorites-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .cart-content.show, .favorites-content.show {
+        display: block;
+      }
+      .cart-item, .favorite-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item-media, .favorite-item-media {
+        flex-shrink: 0;
+        margin-right: 10px;
+      }
+      .cart-item img, .favorite-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .video-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .video-thumbnail .fa-play-circle {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .video-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      /* تنسيق خاص للمدونات في المفضلة */
+      .blog-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .blog-thumbnail .fa-file-text-o {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .blog-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      .cart-item-details, .favorite-item-details {
+        flex-grow: 1;
+        min-width: 0;
+        padding-right: 10px;
+      }
+      .cart-item-title, .favorite-item-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .cart-item-info, .favorite-item-info {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .cart-item-remove, .favorite-item-remove {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0 5px;
+        align-self: center;
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        font-weight: 600;
+      }
+      .cart-actions, .favorites-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .checkout-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .clear-cart-btn, .clear-favorites-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* تنسيقات إضافية للمعلومات */
+      .product-description {
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      .product-features {
+        margin-bottom: 20px;
+      }
+      .product-features ul {
+        padding-left: 20px;
+      }
+      .product-features li {
+        margin-bottom: 8px;
+      }
+
+      /* مسافات إضافية بين Level و Add to Cart */
+      .level-options {
+        margin-bottom: 30px; /* زيادة المسافة من 20px إلى 30px */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <div class="row justify-content-between">
+            <div class="col d-flex align-items-center">
+              <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <div class="social-media">
+                <p class="mb-0 d-flex">
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"></span></a>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+	    	<a class="navbar-brand" href="index.html">Aliaa<span style="color: #D9A299;">Fit<i class="fa fa-heart"></i></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+          <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+        <ul class="navbar-nav ml-auto">
+                <li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="myshop.html" class="nav-link">Sportswear</a></li>
+                <li class="nav-item"><a href="coachingprograms.html" class="nav-link">Training Programs</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="consultation-booking.html" class="nav-link">Live Consultation</a></li>
+              <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+              <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+
+            <!-- زر المفضلة في الناف بار -->
+            <li class="nav-item favorites-dropdown">
+              <a href="#" class="nav-link" id="favoritesButton"><i class="fa fa-heart" style="color: red;"></i> Favorites (<span id="favoritesCount">0</span>)</a>
+              <div class="favorites-content" id="favoritesDropdown">
+                <div id="favoritesItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="favorites-actions">
+                  <button class="clear-favorites-btn" onclick="clearFavorites()">Clear All Favorites</button>
+                </div>
+              </div>
+            </li>
+            <!-- زر السلة في الناف بار -->
+            <li class="nav-item cart-dropdown">
+              <a href="#" class="nav-link" id="cartButton"><i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)</a>
+              <div class="cart-content" id="cartDropdown">
+                <div id="cartItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="cart-total">
+                  <span>Total:</span>
+                  <span id="cartTotal">$0</span>
+                </div>
+                <div class="cart-actions">
+                  <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                  <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+                </div>
+              </div>
+            </li>
+            </ul>
+        </div>
+      </div>
+    </nav>
+
+   <!-- قسم الهيرو المعدل -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg'); background-color: #f8f9fa; min-height: 400px; display: flex; align-items: center;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span><a href="coachingprograms.html">coaching programs</a> <i class="ion-ios-arrow-forward"></i></span></p>
+            <h1 class="mb-0 bread" style="color: white; font-size: 48px;">Product Details</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- تفاصيل المنتج -->
+    <section class="product-details">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <img id="productImage" src="" alt="Product Image" class="product-image">
+            <!-- سهم العودة إلى المتجر -->
+            <a href="myshop.html" class="back-to-shop">
+              <i class="ion-ios-arrow-back"></i> Back to Shop
+            </a>
+          </div>
+          <div class="col-md-6">
+            <div class="product-info">
+              <h1 id="productTitle" class="product-title">Product Name</h1>
+              <p id="productPrice" class="product-price">$0</p>
+              
+              <!-- وصف المنتج -->
+              <div class="product-description">
+                <p id="productDescription">This is a detailed description of the product. It explains what the product is about and its key features.</p>
+              </div>
+              
+              <!-- خيارات التنسيق (للملفات) -->
+              <div class="format-options" id="formatOptions" style="display: none;">
+                <h4>Format:</h4>
+                <button class="format-btn active" data-format="PDF">PDF</button>
+                <button class="format-btn" data-format="EPUB">EPUB</button>
+                <button class="format-btn" data-format="MOBI">MOBI</button>
+              </div>
+              
+              <!-- خيارات الوصول (للفيديوهات والكورسات) -->
+              <div class="access-options" id="accessOptions" style="display: none;">
+                <h4>Access Type:</h4>
+                <button class="access-btn active" data-access="Lifetime">Lifetime Access</button>
+                <button class="access-btn" data-access="1-Year">1 Year Access</button>
+                <button class="access-btn" data-access="6-Months">6 Months Access</button>
+              </div>
+              
+              <!-- خيارات المستوى (للكورسات) -->
+              <div class="level-options" id="levelOptions" style="display: none;">
+                <h4>Level:</h4>
+                <button class="level-btn active" data-level="Beginner">Beginner</button>
+                <button class="level-btn" data-level="Intermediate">Intermediate</button>
+                <button class="level-btn" data-level="Advanced">Advanced</button>
+              </div>
+              
+              <!-- تم إزالة عداد الكمية بالكامل -->
+              
+              <div class="product-actions">
+                <button class="add-to-cart-btn" id="addToCartBtn">Add to Cart</button>
+              </div>
+              
+              <!-- ميزات المنتج -->
+              <div class="product-features">
+                <h4>Features:</h4>
+                <ul id="productFeatures">
+                  <li>High quality content</li>
+                  <li>Easy to follow instructions</li>
+                  <li>Lifetime updates</li>
+                  <li>Support available</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+ 
+    <footer class="footer">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-10 col-lg-6">
+						<div class="subscribe mb-5">
+							<form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-lg-5">
+						<div class="row">
+							<div class="col-md-12 col-lg-8 mb-md-0 mb-4">
+								<h2 class="footer-heading"><a href="index.html" class="logo">Aliaa<span style="color: #D9A299;">Fit</span></a></h2>
+								<p>Empowering women and girls through fitness, with specialized programs and modest sportswear for hijabi women.</p>
+								<a href="about.html">read more <span class="ion-ios-arrow-round-forward"></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 col-lg-7">
+						<div class="row">
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Services</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Training Programs</a></li>
+		              <li><a href="#" class="py-1 d-block">Video Courses</a></li>
+		              <li><a href="#" class="py-1 d-block">Live Coaching</a></li>
+		              <li><a href="#" class="py-1 d-block">Sportswear</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">About</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Our Story</a></li>
+		              <li><a href="#" class="py-1 d-block">Coaches</a></li>
+		              <li><a href="#" class="py-1 d-block">Careers</a></li>
+		              <li><a href="#" class="py-1 d-block">Blog</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Resources</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">FAQ</a></li>
+		              <li><a href="#" class="py-1 d-block">Support</a></li>
+		              <li><a href="#" class="py-1 d-block">Privacy</a></li>
+		              <li><a href="#" class="py-1 d-block">Terms</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Connect</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Facebook</a></li>
+		              <li><a href="#" class="py-1 d-block">Instagram</a></li>
+		              <li><a href="#" class="py-1 d-block">WhatsApp</a></li>
+		              <li><a href="#" class="py-1 d-block">YouTube</a></li>
+		            </ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-5">
+          <div class="col-md-6 col-lg-8">
+            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Aliaa Fit - Empowering Women's Fitness
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-right">
+          	<p class="mb-0 list-unstyled">
+          		<a class="mr-md-3" href="#">Terms</a>
+          		<a class="mr-md-3" href="#">Privacy</a>
+          		<a class="mr-md-3" href="#">Contact</a>
+          	</p>
+          </div>
+        </div>
+			</div>
+		</footer>
+    <!-- إضافة مكتبة SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+      // الكود المحدث ليكون مشابهًا للكود الثاني
+      let favorites = [];
+      let cart = [];
+      let isCartOpen = false;
+      let isFavoritesOpen = false;
+      let currentProductType = '';
+      
+      // تحميل البيانات من localStorage
+      function loadData() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCartCount();
+          updateCartDropdown();
+        }
+        
+        const savedFavorites = localStorage.getItem('favorites');
+        if (savedFavorites) {
+          favorites = JSON.parse(savedFavorites);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+        }
+      }
+      
+      // تحديث عدد المنتجات في السلة (عدد المنتجات المختلفة)
+      function updateCartCount() {
+        document.getElementById("cartCount").innerText = cart.length;
+      }
+      
+      function updateFavoritesCount() {
+        document.getElementById("favoritesCount").innerText = favorites.length;
+      }
+      
+      // تحديث محتويات السلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateCartDropdown() {
+        const cartItemsList = document.getElementById("cartItemsList");
+        const cartTotal = document.getElementById("cartTotal");
+        
+        if (cart.length === 0) {
+          cartItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your cart is empty</p>';
+          cartTotal.textContent = "$0";
+          return;
+        }
+        
+        let itemsHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+          // استخراج السعر من المنتج - باستخدام نفس المنطق لجميع المنتجات
+          let price = 0;
+          if (typeof item.price === 'string') {
+            price = parseFloat(item.price.replace('$', '').replace(/[^\d.-]/g, ''));
+          } else if (typeof item.price === 'number') {
+            price = item.price;
+          }
+          
+          const itemTotal = price * (item.quantity || 1);
+          total += itemTotal;
+          
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          // بناء معلومات المنتج بناءً على نوعه
+          let itemInfo = '';
+          
+          // للمنتجات من صفحة single-product.html فقط، نعرض Qty:
+          // تم التعديل ليشمل فقط المنتجات من single-product.html
+          if (item.source === 'single-product') {
+            itemInfo += `Qty: ${item.quantity || 1}`;
+          }
+          
+          // إضافة معلومات إضافية للمنتجات الأخرى
+          if (item.format) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Format: ${item.format}`;
+          }
+          if (item.access) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Access: ${item.access}`;
+          }
+          if (item.level) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Level: ${item.level}`;
+          }
+          if (item.size && item.size !== 'N/A') {
+            itemInfo += `${itemInfo ? ' | ' : ''}Size: ${item.size}`;
+          }
+          
+          itemsHTML += `
+            <div class="cart-item">
+              <div class="cart-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="cart-item-details">
+                <div class="cart-item-title">${item.title}</div>
+                ${itemInfo ? `<div class="cart-item-info">${itemInfo}</div>` : ''}
+                <div class="cart-item-info">$${itemTotal.toFixed(2)}</div>
+              </div>
+              <button class="cart-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        cartItemsList.innerHTML = itemsHTML;
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.cart-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromCart(index);
+          });
+        });
+      }
+      
+      // تحديث محتويات المفضلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateFavoritesDropdown() {
+        const favoritesItemsList = document.getElementById("favoritesItemsList");
+        
+        if (favorites.length === 0) {
+          favoritesItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your favorites list is empty</p>';
+          return;
+        }
+        
+        let itemsHTML = '';
+        
+        favorites.forEach((item, index) => {
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          let itemType = '';
+          if (item.type === 'product') {
+            itemType = 'Item';
+          } else if (item.type === 'blog') {
+            itemType = 'Blog Post';
+          } else if (item.type === 'video') {
+            itemType = 'Video Course';
+          } else if (item.type === 'course') {
+            itemType = 'Training Program';
+          }
+          
+          itemsHTML += `
+            <div class="favorite-item">
+              <div class="favorite-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="favorite-item-details">
+                <div class="favorite-item-title">${item.title}</div>
+                ${itemType ? `<div class="favorite-item-info">${itemType}</div>` : ''}
+              </div>
+              <button class="favorite-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        favoritesItemsList.innerHTML = itemsHTML;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.favorite-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromFavorites(index);
+          });
+        });
+      }
+      
+      // استبدال alert العادي بـ SweetAlert
+      function showSweetAlert(icon, title, text = '', timer = 1500) {
+        Swal.fire({
+          icon: icon,
+          title: title,
+          text: text,
+          timer: timer,
+          showConfirmButton: false,
+          position: 'top-end',
+          toast: true,
+          background: '#f8f9fa',
+          customClass: {
+            popup: 'animated fadeInDown'
+          }
+        });
+      }
+
+      // استبدال confirm العادي بـ SweetAlert
+      function showSweetConfirm(title, text, confirmButtonText, cancelButtonText) {
+        return Swal.fire({
+          title: title,
+          text: text,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: confirmButtonText,
+          cancelButtonText: cancelButtonText
+        });
+      }
+      
+      // إزالة عنصر من السلة
+      async function removeFromCart(index) {
+        if (index >= 0 && index < cart.length) {
+          // تأكيد الإزالة باستخدام SweetAlert
+          const result = await showSweetConfirm(
+            'Remove Item', 
+            `Are you sure you want to remove ${cart[index].title} from your cart?`,
+            'Yes, remove it!',
+            'Cancel'
+          );
+          
+          if (result.isConfirmed) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDropdown();
+            
+            showSweetAlert('success', 'Item removed from cart!');
+          }
+        }
+      }
+      
+      // إزالة عنصر من المفضلة
+      async function removeFromFavorites(index) {
+        if (index >= 0 && index < favorites.length) {
+          let removedItem = favorites[index];
+          favorites.splice(index, 1);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          showSweetAlert('success', `💔 ${removedItem.title} removed from favorites!`);
+        }
+      }
+      
+      // إفراغ السلة بالكامل
+      async function clearCart() {
+        if (cart.length === 0) {
+          showSweetAlert('info', 'Your cart is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Cart', 
+          'Are you sure you want to clear your entire cart?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDropdown();
+          
+          showSweetAlert('success', 'Your cart has been cleared!');
+        }
+      }
+      
+      // إفراغ المفضلة بالكامل
+      async function clearFavorites() {
+        if (favorites.length === 0) {
+          showSweetAlert('info', 'Your favorites list is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Favorites', 
+          'Are you sure you want to clear your entire favorites list?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          favorites = [];
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          
+          showSweetAlert('success', 'Your favorites list has been cleared!');
+        }
+      }
+      
+      // حفظ المفضلة في localStorage
+      function saveFavorites(){
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      }
+      
+      // المتابعة إلى الدفع
+      function proceedToCheckout() {
+        if (cart.length === 0) {
+          showSweetAlert('warning', 'Your cart is empty!');
+          return;
+        }
+        
+        // حفظ السلة مؤقتًا للدفع
+        localStorage.setItem('checkoutCart', JSON.stringify(cart));
+        
+        // الانتقال إلى صفحة الدفع
+        window.location.href = "checkout.html";
+      }
+      
+      // الحصول على معلمات URL
+      function getUrlParams() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return {
+          title: urlParams.get('title'),
+          price: urlParams.get('price'),
+          image: urlParams.get('image'),
+          category: urlParams.get('category'),
+          source: urlParams.get('source') // إضافة مصدر المنتج
+        };
+      }
+      
+      // تحديد نوع المنتج بناءً على الفئة
+      function determineProductType(category) {
+        if (category) {
+          return category;
+        }
+        
+        // إذا لم يتم تحديد الفئة، نحددها بناءً على عنوان المنتج
+        const title = document.getElementById('productTitle').textContent.toLowerCase();
+        if (title.includes('pdf') || title.includes('training program')) {
+          return 'Training Programs';
+        } else if (title.includes('video') || title.includes('yoga')) {
+          return 'Video Courses';
+        } else if (title.includes('course') || title.includes('healthy')) {
+          return 'Courses';
+        }
+        
+        return 'Training Programs'; // افتراضي
+      }
+      
+      // إعداد خيارات المنتج بناءً على النوع
+      function setupProductOptions(type) {
+        // إخفاء جميع الخيارات أولاً
+        document.getElementById('formatOptions').style.display = 'none';
+        document.getElementById('accessOptions').style.display = 'none';
+        document.getElementById('levelOptions').style.display = 'none';
+        
+        // إظهار الخيارات المناسبة بناءً على النوع
+        switch(type) {
+          case 'Training Programs':
+            document.getElementById('formatOptions').style.display = 'block';
+            break;
+          case 'Video Courses':
+            document.getElementById('accessOptions').style.display = 'block';
+            break;
+          case 'Courses':
+            document.getElementById('accessOptions').style.display = 'block';
+            document.getElementById('levelOptions').style.display = 'block';
+            break;
+        }
+      }
+      
+      // تعبئة بيانات المنتج
+      function populateProductData() {
+        const params = getUrlParams();
+        if (params.title) {
+          document.getElementById('productTitle').textContent = params.title;
+          document.title = `Health Coach - ${params.title}`;
+          
+          // تحديد نوع المنتج
+          currentProductType = determineProductType(params.category);
+          setupProductOptions(currentProductType);
+          
+          // تعيين وصف المنتج والميزات بناءً على النوع
+          setProductDescriptionAndFeatures(params.title, currentProductType);
+        }
+        if (params.price) {
+          document.getElementById('productPrice').textContent = params.price;
+        }
+        if (params.image) {
+          document.getElementById('productImage').src = params.image;
+        }
+      }
+      
+      // تعيين وصف المنتج والميزات بناءً على النوع
+      function setProductDescriptionAndFeatures(title, type) {
+        let description = '';
+        let features = [];
+        
+        switch(type) {
+          case 'Training Programs':
+            description = `This comprehensive training program provides detailed workout plans and nutrition guidance to help you achieve your fitness goals. The program includes step-by-step instructions and progress tracking.`;
+            features = [
+              'Comprehensive workout plans',
+              'Nutrition guidance',
+              'Progress tracking sheets',
+              'Mobile-friendly format',
+              'Lifetime updates'
+            ];
+            break;
+          case 'Video Courses':
+            description = `This video course offers high-quality instructional videos that guide you through each exercise with proper form and technique. Perfect for visual learners who want to follow along with an expert.`;
+            features = [
+              'HD video quality',
+              'Expert demonstrations',
+              'Downloadable for offline viewing',
+              'Progress tracking',
+              'Access on all devices'
+            ];
+            break;
+          case 'Courses':
+            description = `This comprehensive course combines theoretical knowledge with practical application to give you a complete understanding of fitness principles and techniques.`;
+            features = [
+              'Comprehensive curriculum',
+              'Interactive quizzes',
+              'Certificate of completion',
+              'Community support',
+              'Lifetime access to updates'
+            ];
+            break;
+          default:
+            description = `This product offers high-quality content to help you achieve your fitness goals with expert guidance and support.`;
+            features = [
+              'Expert guidance',
+              'Easy to follow',
+              'Lifetime updates',
+              'Support available'
+            ];
+        }
+        
+        document.getElementById('productDescription').textContent = description;
+        
+        const featuresList = document.getElementById('productFeatures');
+        featuresList.innerHTML = '';
+        features.forEach(feature => {
+          const li = document.createElement('li');
+          li.textContent = feature;
+          featuresList.appendChild(li);
+        });
+      }
+      
+      // إضافة المنتج إلى السلة
+      async function addToCart() {
+        const params = getUrlParams();
+        const quantity = 1; // تم إزالة عداد الكمية، لذلك الكمية دائماً 1
+        
+        // جمع خيارات المنتج المحددة
+        let productOptions = {
+          title: params.title,
+          price: params.price,
+          image: params.image,
+          quantity: quantity,
+          type: currentProductType,
+          source: params.source || 'product-details', // تحديد مصدر المنتج
+          paid: false
+        };
+        
+        // إضافة الخيارات الإضافية بناءً على نوع المنتج
+        switch(currentProductType) {
+          case 'Training Programs':
+            const format = document.querySelector('.format-btn.active').getAttribute('data-format');
+            productOptions.format = format;
+            break;
+          case 'Video Courses':
+            const access = document.querySelector('.access-btn.active').getAttribute('data-access');
+            productOptions.access = access;
+            break;
+          case 'Courses':
+            const courseAccess = document.querySelector('.access-btn.active').getAttribute('data-access');
+            const level = document.querySelector('.level-btn.active').getAttribute('data-level');
+            productOptions.access = courseAccess;
+            productOptions.level = level;
+            break;
+        }
+        
+        // بناء رسالة التأكيد
+        let confirmMessage = `Are you sure you want to add ${params.title} to your cart?`;
+        if (productOptions.format) {
+          confirmMessage += ` (Format: ${productOptions.format})`;
+        }
+        if (productOptions.access) {
+          confirmMessage += ` (Access: ${productOptions.access})`;
+        }
+        if (productOptions.level) {
+          confirmMessage += ` (Level: ${productOptions.level})`;
+        }
+        
+        // طلب التأكيد باستخدام SweetAlert
+        const result = await showSweetConfirm(
+          'Add to Cart?',
+          confirmMessage,
+          'Yes, add to cart!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          // البحث عن المنتج في السلة
+          const existingItemIndex = cart.findIndex(item => 
+            item.title === params.title && 
+            item.format === productOptions.format && 
+            item.access === productOptions.access && 
+            item.level === productOptions.level
+          );
+          
+          if (existingItemIndex !== -1) {
+            // إذا كان المنتج موجودًا بالفعل، قم بتحديث الكمية
+            cart[existingItemIndex].quantity += quantity;
+          } else {
+            // إذا لم يكن موجودًا، أضف منتجًا جديدًا
+            cart.push(productOptions);
+          }
+          
+          // حفظ السلة في localStorage
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDropdown();
+          
+          // بناء رسالة النجاح
+          let successMessage = `${params.title} has been added to your cart!`;
+          if (productOptions.format) {
+            successMessage += ` (Format: ${productOptions.format})`;
+          }
+          if (productOptions.access) {
+            successMessage += ` (Access: ${productOptions.access})`;
+          }
+          if (productOptions.level) {
+            successMessage += ` (Level: ${productOptions.level})`;
+          }
+          
+          // عرض رسالة نجاح باستخدام SweetAlert
+          showSweetAlert('success', successMessage);
+        }
+      }
+      
+      // تهيئة الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        populateProductData();
+        
+        // اختيار التنسيق
+        document.querySelectorAll('.format-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+        
+        // اختيار نوع الوصول
+        document.querySelectorAll('.access-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.access-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+        
+        // اختيار المستوى
+        document.querySelectorAll('.level-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+          });
+        });
+        
+        // إضافة إلى السلة
+        document.getElementById('addToCartBtn').addEventListener('click', addToCart);
+        
+        // عرض/إخفاء السلة في القائمة
+        document.getElementById('cartButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isCartOpen = !isCartOpen;
+          document.getElementById('cartDropdown').classList.toggle('show');
+          
+          // إغلاق المفضلة إذا كانت مفتوحة
+          if (isFavoritesOpen) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+        
+        // عرض/إخفاء المفضلة في القائمة
+        document.getElementById('favoritesButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isFavoritesOpen = !isFavoritesOpen;
+          document.getElementById('favoritesDropdown').classList.toggle('show');
+          
+          // إغلاق السلة إذا كانت مفتوحة
+          if (isCartOpen) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+        });
+        
+        // إغلاق السلة والمفضلة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.cart-dropdown')) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+          
+          if (!e.target.closest('.favorites-dropdown')) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+      });
+    </script>
+     <!-- باقي السكريبتات تبقى كما هي -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+     <title>Health Coach - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+ 
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- إضافة SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+
+    <style>
+      .tracking-container {
+        padding: 50px 0;
+      }
+      .tracking-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 30px;
+        margin-bottom: 30px;
+      }
+      .tracking-title {
+        font-size: 24px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+      .order-info {
+        margin-bottom: 30px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid #eee;
+      }
+      .order-details {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
+      }
+      .order-detail-item {
+        margin-bottom: 10px;
+        flex: 1 0 50%;
+      }
+      .order-detail-label {
+        font-weight: 600;
+        color: #666;
+      }
+      .tracking-progress {
+        margin: 40px 0;
+      }
+      .progress-steps {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 30px;
+      }
+      .progress-steps::before {
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background-color: #e9ecef;
+        z-index: 1;
+      }
+      .progress-bar {
+        position: absolute;
+        top: 15px;
+        left: 0;
+        height: 4px;
+        background-color: #28a745;
+        z-index: 2;
+        transition: width 0.5s ease;
+      }
+      .step {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+        z-index: 3;
+      }
+      .step-icon {
+        width: 34px;
+        height: 34px;
+        border-radius: 50%;
+        background-color: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+        color: #6c757d;
+      }
+      .step.active .step-icon {
+        background-color: #28a745;
+        color: white;
+      }
+      .step.completed .step-icon {
+        background-color: #28a745;
+        color: white;
+      }
+      .step-label {
+        font-size: 14px;
+        text-align: center;
+        color: #6c757d;
+      }
+      .step.active .step-label {
+        color: #28a745;
+        font-weight: 600;
+      }
+      .step.completed .step-label {
+        color: #28a745;
+      }
+      .order-items {
+        margin-bottom: 30px;
+      }
+      .order-item {
+        display: flex;
+        align-items: center;
+        padding: 15px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .product-image {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 8px;
+        margin-right: 15px;
+      }
+      .product-details {
+        flex: 1;
+      }
+      .product-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      .product-meta {
+        color: #2A3335;
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+      .product-price {
+        font-weight: 600;
+        color: #28a745;
+      }
+      .estimated-delivery {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 20px;
+      }
+      .delivery-date {
+        font-weight: 600;
+        color: #28a745;
+      }
+      .help-section {
+        margin-top: 30px;
+        text-align: center;
+      }
+      .help-link {
+        color: #FFCFEF;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .help-link:hover {
+        text-decoration: underline;
+      }
+      .shipping-info {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid #eee;
+      }
+      .shipping-address {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 8px;
+        margin-top: 10px;
+      }
+      .order-actions {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        margin-top: 30px;
+      }
+      .btn {
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+      .btn-primary {
+        background: #FFCFEF;
+        color: #2A3335;
+        border: none;
+      }
+      .btn-primary:hover {
+        background: #e6b8d7;
+      }
+      .btn-secondary {
+        background: #6c757d;
+        color: white;
+        border: none;
+      }
+      .btn-secondary:hover {
+        background: #5a6268;
+      }
+      
+      /* تنسيقات السلة والمفضلة في القائمة - تم التحديث */
+      .cart-dropdown, .favorites-dropdown {
+        position: relative;
+      }
+      .cart-content, .favorites-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .cart-content.show, .favorites-content.show {
+        display: block;
+      }
+      .cart-item, .favorite-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item-media, .favorite-item-media {
+        flex-shrink: 0;
+        margin-right: 10px;
+      }
+      .cart-item img, .favorite-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .video-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .video-thumbnail .fa-play-circle {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .video-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      .blog-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .blog-thumbnail .fa-file-text-o {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .blog-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      .cart-item-details, .favorite-item-details {
+        flex-grow: 1;
+        min-width: 0;
+        padding-right: 10px;
+      }
+      .cart-item-title, .favorite-item-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .cart-item-info, .favorite-item-info {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .cart-item-remove, .favorite-item-remove {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0 5px;
+        align-self: center;
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        font-weight: 600;
+      }
+      .cart-actions, .favorites-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .checkout-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .clear-cart-btn, .clear-favorites-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="container">
+        <div class="row justify-content-between">
+            <div class="col d-flex align-items-center">
+              <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+            </div>
+            <div class="col d-flex justify-content-end">
+              <div class="social-media">
+                <p class="mb-0 d-flex">
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"></span></a>
+                  <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"></span></a>
+                </p>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Aliaa<span style="color: #D9A299;">Fit<i class="fa fa-heart"></i></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav">
+          <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+             <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+              <li class="nav-item"><a href="myshop.html" class="nav-link">Sportswear</a></li>
+                <li class="nav-item"><a href="coachingprograms.html" class="nav-link">Training Programs</a></li>
+                <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+              <li class="nav-item"><a href="consultation-booking.html" class="nav-link">Live Consultation</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item active"><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+            
+            <!-- زر المفضلة في الناف بار -->
+            <li class="nav-item favorites-dropdown">
+              <a href="#" class="nav-link" id="favoritesButton"><i class="fa fa-heart" style="color: red;"></i> Favorites (<span id="favoritesCount">0</span>)</a>
+              <div class="favorites-content" id="favoritesDropdown">
+                <div id="favoritesItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="favorites-actions">
+                  <button class="clear-favorites-btn" onclick="clearFavorites()">Clear All Favorites</button>
+                </div>
+              </div>
+            </li>
+            
+            <!-- زر السلة في الناف بار -->
+            <li class="nav-item cart-dropdown">
+              <a href="#" class="nav-link" id="cartButton"><i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)</a>
+              <div class="cart-content" id="cartDropdown">
+                <div id="cartItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="cart-total">
+                  <span>Total:</span>
+                  <span id="cartTotal">$0</span>
+                </div>
+                <div class="cart-actions">
+                  <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                  <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+   <!-- قسم الهيرو المعدل -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg'); background-color: #f8f9fa; min-height: 400px; display: flex; align-items: center;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+          <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span><a href="order-tracking.html">order-tracking</a> <i class="ion-ios-arrow-forward"></i></span> </p><h1 class="mb-0 bread" style="color: white; font-size: 48px;">order-tracking</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- قسم تتبع الطلب -->
+    <section class="tracking-container">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <div class="tracking-card">
+              <h2 class="tracking-title">Order #<span id="orderNumber">12345</span></h2>
+              
+              <div class="order-info">
+                <div class="order-details">
+                  <div class="order-detail-item">
+                    <span class="order-detail-label">Order Date:</span>
+                    <span id="orderDate">October 15, 2023</span>
+                  </div>
+                  <div class="order-detail-item">
+                    <span class="order-detail-label">Order Status:</span>
+                    <span id="orderStatus" class="badge badge-success">Shipped</span>
+                  </div>
+                  <div class="order-detail-item">
+                    <span class="order-detail-label">Total Amount:</span>
+                    <span id="orderTotal">$129.99</span>
+                  </div>
+                  <div class="order-detail-item">
+                    <span class="order-detail-label">Payment Method:</span>
+                    <span id="paymentMethod">Credit Card</span>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="tracking-progress">
+                <h3>Order Progress</h3>
+                <div class="progress-steps">
+                  <div class="progress-bar" id="progressBar" style="width: 75%;"></div>
+                  <div class="step completed">
+                    <div class="step-icon">✓</div>
+                    <div class="step-label">Order Placed</div>
+                  </div>
+                  <div class="step completed">
+                    <div class="step-icon">✓</div>
+                    <div class="step-label">Processing</div>
+                  </div>
+                  <div class="step active">
+                    <div class="step-icon">🚚</div>
+                    <div class="step-label">Shipped</div>
+                  </div>
+                  <div class="step">
+                    <div class="step-icon">🏠</div>
+                    <div class="step-label">Delivered</div>
+                  </div>
+                </div>
+                
+                <div class="estimated-delivery">
+                  <p><strong>Estimated Delivery:</strong> <span class="delivery-date" id="estimatedDelivery">October 20, 2023</span></p>
+                </div>
+              </div>
+              
+              <div class="shipping-info">
+                <h3>Shipping Information</h3>
+                <div class="shipping-address">
+                  <p><strong id="shippingName">John Doe</strong></p>
+                  <p id="shippingAddress">123 Main Street, Apt 4B</p>
+                  <p id="shippingCityState">New York, NY 10001</p>
+                  <p id="shippingCountry">United States</p>
+                  <p>Phone: <span id="shippingPhone">+1 (555) 123-4567</span></p>
+                  <p>Email: <span id="shippingEmail">john.doe@example.com</span></p>
+                  <p>Shipping Method: <span id="shippingMethod">Standard Shipping</span></p>
+                </div>
+              </div>
+              
+              <div class="order-items">
+                <h3>Order Items</h3>
+                <div id="orderItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+              </div>
+              
+              <div class="order-actions">
+                <button class="btn btn-primary" onclick="window.print()">Print Order Details</button>
+                <button class="btn btn-secondary" onclick="window.location.href='contact.html'">Contact Support</button>
+              </div>
+              
+              <div class="help-section">
+                <p>Need help with your order? <a href="contact.html" class="help-link">Contact our support team</a></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- نفس الفوتر الموجود في صفحة الدفع -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10 col-lg-6">
+            <div class="subscribe mb-5">
+              <form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-lg-5">
+            <div class="row">
+              <div class="col-md-12 col-lg-8 mb-md-0 mb-4">
+                <h2 class="footer-heading"><a href="#" class="logo">Alia<span>Fit</span></a></h2>
+                <p>Empowering women and girls through fitness, with specialized programs and modest sportswear for hijabi women.</p>
+                <a href="about.html">read more <span class="ion-ios-arrow-round-forward"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-7">
+            <div class="row">
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Services</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Training Programs</a></li>
+                  <li><a href="#" class="py-1 d-block">Video Courses</a></li>
+                  <li><a href="#" class="py-1 d-block">Live Coaching</a></li>
+                  <li><a href="#" class="py-1 d-block">Sportswear</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">About</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Our Story</a></li>
+                  <li><a href="#" class="py-1 d-block">Coaches</a></li>
+                  <li><a href="#" class="py-1 d-block">Careers</a></li>
+                  <li><a href="#" class="py-1 d-block">Blog</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Resources</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">FAQ</a></li>
+                  <li><a href="#" class="py-1 d-block">Support</a></li>
+                  <li><a href="#" class="py-1 d-block">Privacy</a></li>
+                  <li><a href="#" class="py-1 d-block">Terms</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Connect</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Facebook</a></li>
+                  <li><a href="#" class="py-1 d-block">Instagram</a></li>
+                  <li><a href="#" class="py-1 d-block">WhatsApp</a></li>
+                  <li><a href="#" class="py-1 d-block">YouTube</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6 col-lg-8">
+            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Alia Fit - Empowering Women's Fitness
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-right">
+            <p class="mb-0 list-unstyled">
+              <a class="mr-md-3" href="#">Terms</a>
+              <a class="mr-md-3" href="#">Privacy</a>
+              <a class="mr-md-3" href="#">Contact</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      // الكود المحدث للسلة والمفضلة - مطابق للكود الثاني
+      let favorites = [];
+      let cart = [];
+      let isCartOpen = false;
+      let isFavoritesOpen = false;
+      
+      // تحميل البيانات من localStorage
+      function loadData() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCartCount();
+          updateCartDropdown();
+        }
+        
+        const savedFavorites = localStorage.getItem('favorites');
+        if (savedFavorites) {
+          favorites = JSON.parse(savedFavorites);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+        }
+      }
+      
+      // تحديث عدد المنتجات في السلة (عدد المنتجات المختلفة)
+      function updateCartCount() {
+        document.getElementById("cartCount").innerText = cart.length;
+      }
+      
+      function updateFavoritesCount() {
+        document.getElementById("favoritesCount").innerText = favorites.length;
+      }
+      
+      // تحديث محتويات السلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateCartDropdown() {
+        const cartItemsList = document.getElementById("cartItemsList");
+        const cartTotal = document.getElementById("cartTotal");
+        
+        if (cart.length === 0) {
+          cartItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your cart is empty</p>';
+          cartTotal.textContent = "$0";
+          return;
+        }
+        
+        let itemsHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+          // استخراج السعر من المنتج - باستخدام نفس المنطق لجميع المنتجات
+          let price = 0;
+          if (typeof item.price === 'string') {
+            price = parseFloat(item.price.replace('$', '').replace(/[^\d.-]/g, ''));
+          } else if (typeof item.price === 'number') {
+            price = item.price;
+          }
+          
+          const itemTotal = price * (item.quantity || 1);
+          total += itemTotal;
+          
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          // بناء معلومات المنتج بناءً على نوعه
+          let itemInfo = '';
+          
+          // للمنتجات من صفحة single-product.html فقط، نعرض Qty:
+          // تم التعديل ليشمل فقط المنتجات من single-product.html
+          if (item.source === 'single-product') {
+            itemInfo += `Qty: ${item.quantity || 1}`;
+          }
+          
+          // إضافة معلومات إضافية للمنتجات الأخرى
+          if (item.format) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Format: ${item.format}`;
+          }
+          if (item.access) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Access: ${item.access}`;
+          }
+          if (item.level) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Level: ${item.level}`;
+          }
+          if (item.size && item.size !== 'N/A') {
+            itemInfo += `${itemInfo ? ' | ' : ''}Size: ${item.size}`;
+          }
+          
+          itemsHTML += `
+            <div class="cart-item">
+              <div class="cart-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="cart-item-details">
+                <div class="cart-item-title">${item.title}</div>
+                ${itemInfo ? `<div class="cart-item-info">${itemInfo}</div>` : ''}
+                <div class="cart-item-info">$${itemTotal.toFixed(2)}</div>
+              </div>
+              <button class="cart-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        cartItemsList.innerHTML = itemsHTML;
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.cart-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromCart(index);
+          });
+        });
+      }
+      
+      // تحديث محتويات المفضلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateFavoritesDropdown() {
+        const favoritesItemsList = document.getElementById("favoritesItemsList");
+        
+        if (favorites.length === 0) {
+          favoritesItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your favorites list is empty</p>';
+          return;
+        }
+        
+        let itemsHTML = '';
+        
+        favorites.forEach((item, index) => {
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          let itemType = '';
+          if (item.type === 'product') {
+            itemType = 'Item';
+          } else if (item.type === 'blog') {
+            itemType = 'Blog Post';
+          } else if (item.type === 'video') {
+            itemType = 'Video Course';
+          } else if (item.type === 'course') {
+            itemType = 'Training Program';
+          }
+          
+          itemsHTML += `
+            <div class="favorite-item">
+              <div class="favorite-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="favorite-item-details">
+                <div class="favorite-item-title">${item.title}</div>
+                ${itemType ? `<div class="favorite-item-info">${itemType}</div>` : ''}
+              </div>
+              <button class="favorite-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        favoritesItemsList.innerHTML = itemsHTML;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.favorite-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromFavorites(index);
+          });
+        });
+      }
+      
+      // استبدال alert العادي بـ SweetAlert
+      function showSweetAlert(icon, title, text = '', timer = 1500) {
+        Swal.fire({
+          icon: icon,
+          title: title,
+          text: text,
+          timer: timer,
+          showConfirmButton: false,
+          position: 'top-end',
+          toast: true,
+          background: '#f8f9fa',
+          customClass: {
+            popup: 'animated fadeInDown'
+          }
+        });
+      }
+
+      // استبدال confirm العادي بـ SweetAlert
+      function showSweetConfirm(title, text, confirmButtonText, cancelButtonText) {
+        return Swal.fire({
+          title: title,
+          text: text,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: confirmButtonText,
+          cancelButtonText: cancelButtonText
+        });
+      }
+      
+      // إزالة عنصر من السلة
+      async function removeFromCart(index) {
+        if (index >= 0 && index < cart.length) {
+          // تأكيد الإزالة باستخدام SweetAlert
+          const result = await showSweetConfirm(
+            'Remove Item', 
+            `Are you sure you want to remove ${cart[index].title} from your cart?`,
+            'Yes, remove it!',
+            'Cancel'
+          );
+          
+          if (result.isConfirmed) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDropdown();
+            
+            showSweetAlert('success', 'Item removed from cart!');
+          }
+        }
+      }
+      
+      // إزالة عنصر من المفضلة
+      async function removeFromFavorites(index) {
+        if (index >= 0 && index < favorites.length) {
+          let removedItem = favorites[index];
+          favorites.splice(index, 1);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          showSweetAlert('success', `💔 ${removedItem.title} removed from favorites!`);
+        }
+      }
+      
+      // إفراغ السلة بالكامل
+      async function clearCart() {
+        if (cart.length === 0) {
+          showSweetAlert('info', 'Your cart is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Cart', 
+          'Are you sure you want to clear your entire cart?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDropdown();
+          
+          showSweetAlert('success', 'Your cart has been cleared!');
+        }
+      }
+      
+      // إفراغ المفضلة بالكامل
+      async function clearFavorites() {
+        if (favorites.length === 0) {
+          showSweetAlert('info', 'Your favorites list is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Favorites', 
+          'Are you sure you want to clear your entire favorites list?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          favorites = [];
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          
+          showSweetAlert('success', 'Your favorites list has been cleared!');
+        }
+      }
+      
+      // حفظ المفضلة في localStorage
+      function saveFavorites(){
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      }
+      
+      // المتابعة إلى الدفع
+      function proceedToCheckout() {
+        if (cart.length === 0) {
+          showSweetAlert('warning', 'Your cart is empty!');
+          return;
+        }
+        
+        // حفظ السلة مؤقتًا للدفع
+        localStorage.setItem('checkoutCart', JSON.stringify(cart));
+        
+        // الانتقال إلى صفحة الدفع
+        window.location.href = "checkout.html";
+      }
+
+      // تحميل بيانات الطلب من localStorage
+      function loadOrderData() {
+        const orderId = getOrderIdFromUrl();
+        const orderData = getOrderData(orderId);
+        
+        if (orderData) {
+          displayOrderData(orderData);
+        } else {
+          // إذا لم يتم العثور على الطلب
+          document.querySelector('.tracking-card').innerHTML = `
+            <div class="text-center py-5">
+              <h3>Order Not Found</h3>
+              <p>We couldn't find an order with the provided ID.</p>
+              <div class="order-actions">
+                <button class="btn btn-primary" onclick="window.location.href='index.html'">Return to Home</button>
+                <button class="btn btn-secondary" onclick="window.location.href='contact.html'">Contact Support</button>
+              </div>
+            </div>
+          `;
+        }
+      }
+      
+      // الحصول على معرف الطلب من عنوان URL
+      function getOrderIdFromUrl() {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get('orderId') || localStorage.getItem('lastOrderId');
+      }
+      
+      // الحصول على بيانات الطلب من localStorage
+      function getOrderData(orderId) {
+        if (!orderId) return null;
+        
+        const orders = JSON.parse(localStorage.getItem('orders') || '{}');
+        return orders[orderId] || null;
+      }
+      
+      // عرض بيانات الطلب
+      function displayOrderData(orderData) {
+        document.getElementById('orderNumber').textContent = orderData.orderId;
+        document.getElementById('orderDate').textContent = formatDate(orderData.orderDate);
+        document.getElementById('orderStatus').textContent = orderData.status;
+        document.getElementById('orderTotal').textContent = `$${orderData.total.toFixed(2)}`;
+        document.getElementById('paymentMethod').textContent = 'Credit Card'; // يمكن تعديل هذا بناءً على البيانات الفعلية
+        document.getElementById('estimatedDelivery').textContent = formatDate(orderData.estimatedDelivery);
+        
+        // عرض معلومات الشحن
+        if (orderData.shippingInfo) {
+          document.getElementById('shippingName').textContent = orderData.shippingInfo.fullName;
+          document.getElementById('shippingAddress').textContent = orderData.shippingInfo.address;
+          document.getElementById('shippingCityState').textContent = `${orderData.shippingInfo.city}, ${orderData.shippingInfo.zipCode}`;
+          document.getElementById('shippingCountry').textContent = orderData.shippingInfo.country;
+          document.getElementById('shippingPhone').textContent = orderData.shippingInfo.phone;
+          document.getElementById('shippingEmail').textContent = orderData.shippingInfo.email;
+          document.getElementById('shippingMethod').textContent = getShippingMethodName(orderData.shippingInfo.shippingMethod);
+        }
+        
+        // تحديث شريط التقدم بناءً على حالة الطلب
+        updateProgressBar(orderData.status);
+        
+        // عرض عناصر الطلب
+        displayOrderItems(orderData.items);
+      }
+      
+      // الحصول على اسم طريقة الشحن
+      function getShippingMethodName(method) {
+        switch(method) {
+          case 'standard': return 'Standard Shipping';
+          case 'express': return 'Express Shipping';
+          case 'overnight': return 'Overnight Shipping';
+          default: return 'Standard Shipping';
+        }
+      }
+      
+      // تحديث شريط التقدم
+      function updateProgressBar(status) {
+        const progressBar = document.getElementById('progressBar');
+        const steps = document.querySelectorAll('.step');
+        
+        // إعادة تعيين جميع الخطوات
+        steps.forEach(step => {
+          step.classList.remove('completed', 'active');
+        });
+        
+        // تعيين الخطوات بناءً على الحالة
+        switch(status) {
+          case 'Processing':
+            progressBar.style.width = '25%';
+            steps[0].classList.add('completed');
+            steps[1].classList.add('active');
+            break;
+          case 'Shipped':
+            progressBar.style.width = '75%';
+            steps[0].classList.add('completed');
+            steps[1].classList.add('completed');
+            steps[2].classList.add('active');
+            break;
+          case 'Delivered':
+            progressBar.style.width = '100%';
+            steps.forEach(step => step.classList.add('completed'));
+            steps[3].classList.add('active');
+            break;
+          default: // Order Placed
+            progressBar.style.width = '0%';
+            steps[0].classList.add('active');
+            break;
+        }
+      }
+      
+      // عرض عناصر الطلب
+      function displayOrderItems(items) {
+        const orderItemsList = document.getElementById('orderItemsList');
+        let itemsHTML = '';
+        
+        items.forEach(item => {
+          itemsHTML += `
+            <div class="order-item">
+              <img src="${item.image}" alt="${item.title}" class="product-image">
+              <div class="product-details">
+                <div class="product-title">${item.title}</div>
+                <div class="product-meta">Size: ${item.size}</div>
+                <div class="product-meta">Quantity: ${item.quantity}</div>
+                <div class="product-price">$${item.total.toFixed(2)}</div>
+              </div>
+            </div>
+          `;
+        });
+        
+        orderItemsList.innerHTML = itemsHTML;
+      }
+      
+      // تنسيق التاريخ
+      function formatDate(dateString) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+      }
+
+      // تهيئة الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        loadOrderData();
+        
+        // عرض/إخفاء السلة في القائمة
+        document.getElementById('cartButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isCartOpen = !isCartOpen;
+          document.getElementById('cartDropdown').classList.toggle('show');
+          
+          // إغلاق المفضلة إذا كانت مفتوحة
+          if (isFavoritesOpen) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+        
+        // عرض/إخفاء المفضلة في القائمة
+        document.getElementById('favoritesButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isFavoritesOpen = !isFavoritesOpen;
+          document.getElementById('favoritesDropdown').classList.toggle('show');
+          
+          // إغلاق السلة إذا كانت مفتوحة
+          if (isCartOpen) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+        });
+        
+        // إغلاق السلة والمفضلة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.cart-dropdown')) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+          
+          if (!e.target.closest('.favorites-dropdown')) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+      });
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Aliaa Fit - Empowering Women's Fitness</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- إضافة مكتبة Ionicons للأسهم -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+ 
+    <link rel="stylesheet" href="css/animate.css">
+    
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- إضافة SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    
+    <style>
+      /* Enhanced Service Cards Styling */
+      .services-card {
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        border: 1px solid rgba(0, 0, 0, 0.05);
+      }
+      
+      .services-card:hover {
+        transform: translateY(-12px);
+        box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12);
+      }
+      
+      .services-img {
+        height: 220px;
+        background-size: cover;
+        background-position: center center;
+        transition: all 0.5s ease;
+        position: relative;
+        overflow: hidden;
+      }
+      
+      .services-card:hover .services-img {
+        transform: scale(1.08);
+      }
+      
+      .services-img::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 40%;
+        background: linear-gradient(to top, rgba(0,0,0,0.3), transparent);
+        z-index: 1;
+      }
+      
+      .services-content {
+        padding: 30px 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+        position: relative;
+        z-index: 2;
+      }
+      
+      .services-icon {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: -55px auto 20px;
+        box-shadow: 0 10px 25px rgba(245, 87, 108, 0.3);
+        position: relative;
+        z-index: 3;
+      }
+      
+      .services-icon i {
+        color: white;
+        font-size: 28px;
+      }
+      
+      .services-card:nth-child(2) .services-icon {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        box-shadow: 0 10px 25px rgba(79, 172, 254, 0.3);
+      }
+      
+      .services-card:nth-child(3) .services-icon {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        box-shadow: 0 10px 25px rgba(67, 233, 123, 0.3);
+      }
+      
+      .services-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        text-align: center;
+        color: #2A3335;
+      }
+      
+      .services-text {
+        color: #2A3335;
+        line-height: 1.7;
+        margin-bottom: 25px;
+        flex-grow: 1;
+        text-align: center;
+      }
+      
+      .services-btn {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 50px;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+      }
+      
+      .services-card:nth-child(1) .services-btn {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: #2A3335;
+        box-shadow: 0 5px 15px rgba(245, 87, 108, 0.3);
+      }
+      
+      .services-card:nth-child(1) .services-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(245, 87, 108, 0.4);
+      }
+      
+      .services-card:nth-child(2) .services-btn {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+        box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+      }
+      
+      .services-card:nth-child(2) .services-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(79, 172, 254, 0.4);
+      }
+      
+      .services-card:nth-child(3) .services-btn {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        color: white;
+        box-shadow: 0 5px 15px rgba(67, 233, 123, 0.3);
+      }
+      
+      .services-card:nth-child(3) .services-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(67, 233, 123, 0.4);
+      }
+      
+      /* Enhanced Membership Cards Styling */
+      .pricing-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      
+      .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      }
+      
+      .pricing-header {
+        padding: 30px 20px 20px;
+        text-align: center;
+        background: #FFCFEF;
+        position: relative;
+      }
+      
+      .pricing-card:nth-child(2) .pricing-header {
+        background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        color: white;
+      }
+      
+      .pricing-card:nth-child(3) .pricing-header {
+        background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        color: white;
+      }
+      
+      .pricing-card:nth-child(4) .pricing-header {
+        background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+        color: white;
+      }
+      
+      .pricing-card:nth-child(2) .pricing-header::after,
+      .pricing-card:nth-child(3) .pricing-header::after,
+      .pricing-card:nth-child(4) .pricing-header::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        border-top: 10px solid;
+      }
+      
+      .pricing-card:nth-child(2) .pricing-header::after {
+        border-top-color: #f5576c;
+      }
+      
+      .pricing-card:nth-child(3) .pricing-header::after {
+        border-top-color: #00f2fe;
+      }
+      
+      .pricing-card:nth-child(4) .pricing-header::after {
+        border-top-color: #38f9d7;
+      }
+      
+      .pricing-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 5px;
+      }
+      
+      .pricing-subtitle {
+        font-size: 0.9rem;
+        opacity: 0.8;
+        margin-bottom: 15px;
+      }
+      
+      .pricing-price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 15px 0;
+      }
+      
+      .pricing-price sup {
+        font-size: 1.2rem;
+        top: -1.2em;
+      }
+      
+      .pricing-features {
+        padding: 25px 20px;
+        flex-grow: 1;
+      }
+      
+      .pricing-features ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      
+      .pricing-features li {
+        padding: 10px 0;
+        border-bottom: 1px solid #f1f1f1;
+        display: flex;
+        align-items: center;
+      }
+      
+      .pricing-features li:last-child {
+        border-bottom: none;
+      }
+      
+      .pricing-features .fa {
+        margin-right: 10px;
+        width: 20px;
+        text-align: center;
+      }
+      
+      .pricing-features .fa-check {
+        color: #28a745;
+      }
+      
+      .pricing-features .fa-times {
+        color: #dc3545;
+      }
+      
+      .pricing-footer {
+        padding: 0 20px 30px;
+        text-align: center;
+      }
+      
+      .pricing-btn {
+        width: 100%;
+        padding: 12px;
+        border-radius: 50px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+      }
+      
+      .pricing-card:nth-child(1) .pricing-btn {
+        background: #FFCFEF;
+        border: 2px solid #FFCFEF;
+        color: #2A3335;
+      }
+      
+      .pricing-card:nth-child(1) .pricing-btn:hover {
+        background: transparent;
+        color: #6c757d;
+      }
+      
+      .pricing-card:nth-child(2) .pricing-btn {
+        background: #f5576c;
+        border: 2px solid #f5576c;
+        color: white;
+      }
+      
+      .pricing-card:nth-child(2) .pricing-btn:hover {
+        background: transparent;
+        color: #f5576c;
+      }
+      
+      .pricing-card:nth-child(3) .pricing-btn {
+        background: #4facfe;
+        border: 2px solid #4facfe;
+        color: white;
+      }
+      
+      .pricing-card:nth-child(3) .pricing-btn:hover {
+        background: transparent;
+        color: #4facfe;
+      }
+      
+      .pricing-card:nth-child(4) .pricing-btn {
+        background: #43e97b;
+        border: 2px solid #43e97b;
+        color: white;
+      }
+      
+      .pricing-card:nth-child(4) .pricing-btn:hover {
+        background: transparent;
+        color: #43e97b;
+      }
+      
+      /* Enhanced Blog Cards Styling */
+      .blog-card {
+        background: #fff;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        overflow: hidden;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+      
+      .blog-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+      }
+      
+      .blog-entry .block-20 {
+        height: 220px;
+        background-size: cover;
+        background-position: center center;
+        transition: all 0.4s ease;
+      }
+      
+      .blog-card:hover .block-20 {
+        transform: scale(1.05);
+      }
+      
+      .blog-card-content {
+        padding: 25px;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        background: #fff;
+      }
+      
+      .blog-meta {
+        display: flex;
+        margin-bottom: 12px;
+        font-size: 0.85rem;
+        color: #2A3335;
+      }
+      
+      .blog-meta span {
+        margin-right: 15px;
+        display: flex;
+        align-items: center;
+      }
+      
+      .blog-meta i {
+        margin-right: 5px;
+        color: #FFCFEF;
+      }
+      
+      .blog-card h3.heading {
+        font-size: 1.25rem;
+        line-height: 1.4;
+        margin-bottom: 15px;
+        flex-grow: 1;
+      }
+      
+      .blog-card h3.heading a {
+        color: #2A3335;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      
+      .blog-card:hover h3.heading a {
+        color: #D9A299;
+      }
+      
+      .blog-excerpt {
+        color: #2A3335;
+        margin-bottom: 20px;
+        line-height: 1.6;
+      }
+      
+      .blog-read-more {
+        color: #D9A299;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+      
+      .blog-read-more i {
+        margin-left: 5px;
+        transition: transform 0.3s ease;
+      }
+      
+      .blog-card:hover .blog-read-more {
+        color: #333;
+      }
+      
+      .blog-card:hover .blog-read-more i {
+        transform: translateX(5px);
+      }
+
+      /* تنسيقات السلة والمفضلة */
+      .cart-dropdown, .favorites-dropdown {
+        position: relative;
+      }
+      .cart-content, .favorites-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .cart-content.show, .favorites-content.show {
+        display: block;
+      }
+      .cart-item, .favorite-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item-media, .favorite-item-media {
+        flex-shrink: 0;
+        margin-right: 10px;
+      }
+      .cart-item img, .favorite-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .video-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .video-thumbnail .fa-play-circle {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .video-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      /* تنسيق خاص للمدونات في المفضلة */
+      .blog-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .blog-thumbnail .fa-file-text-o {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .blog-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      .cart-item-details, .favorite-item-details {
+        flex-grow: 1;
+        min-width: 0;
+        padding-right: 10px;
+      }
+      .cart-item-title, .favorite-item-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .cart-item-info, .favorite-item-info {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .cart-item-remove, .favorite-item-remove {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0 5px;
+        align-self: center;
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        font-weight: 600;
+      }
+      .cart-actions, .favorites-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .checkout-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .clear-cart-btn, .clear-favorites-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* تنسيقات للمفضلة في القائمة */
+      .favorites-count {
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        position: relative;
+        top: -10px;
+        right: 5px;
+      }
+    </style>
+  </head>
+  <body>
+		<div class="wrap">
+			<div class="container">
+				<div class="row justify-content-between">
+						<div class="col d-flex align-items-center">
+							<p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">hello@aliaafit.com</a></p>
+						</div>
+						<div class="col d-flex justify-content-end">
+							<div class="social-media">
+				    		<p class="mb-0 d-flex">
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+				    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-whatsapp"><i class="sr-only">WhatsApp</i></span></a>
+				    		</p>
+			        </div>
+						</div>
+				</div>
+			</div>
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	    	<a class="navbar-brand" href="index.html">Aliaa<span style="color: #D9A299;">Fit<i class="fa fa-heart"></i></span></a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="fa fa-bars"></span> Menu
+	      </button>
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	         <ul class="navbar-nav ml-auto">
+	        	<li class="nav-item active"><a href="index.html" class="nav-link">Home</a></li>
+	        	<li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+	          <li class="nav-item"><a href="myshop.html" class="nav-link">Sportswear</a></li>
+	            <li class="nav-item"><a href="coachingprograms.html" class="nav-link">Training Programs</a></li>
+	        	<li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+	          <li class="nav-item"><a href="consultation-booking.html" class="nav-link">Live Consultation</a></li>
+	          <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                                        <li class="nav-item"><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+
+              <!-- زر المفضلة في الناف بار -->
+              <li class="nav-item favorites-dropdown">
+                <a href="#" class="nav-link" id="favoritesButton"><i class="fa fa-heart" style="color: red;"></i> Favorites (<span id="favoritesCount">0</span>)</a>
+                <div class="favorites-content" id="favoritesDropdown">
+                  <div id="favoritesItemsList">
+                    <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                  </div>
+                  <div class="favorites-actions">
+                    <button class="clear-favorites-btn" onclick="clearFavorites()">Clear All Favorites</button>
+                  </div>
+                </div>
+              </li>
+              <!-- زر السلة في الناف بار -->
+              <li class="nav-item cart-dropdown">
+                <a href="#" class="nav-link" id="cartButton"><i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)</a>
+                <div class="cart-content" id="cartDropdown">
+                  <div id="cartItemsList">
+                    <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                  </div>
+                  <div class="cart-total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0</span>
+                  </div>
+                  <div class="cart-actions">
+                    <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                    <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+                  </div>
+                </div>
+              </li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+
+    <div class="hero-wrap js-fullheight">
+	    <div class="home-slider owl-carousel js-fullheight">
+	      <div class="slider-item js-fullheight" style="background-image:url(images/bg_1.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center">
+		          <div class="col-md-7 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>Welcome to Aliaa Fit</h2>
+			            <h1 class="mb-4">Empowering Women Through Fitness & Wellness</h1>
+			            <p><a href="video-workout-courses.html" class="btn btn-primary">Start Your Journey</a> <a href="coachingprograms.html" class="btn btn-white">Our Programs</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item js-fullheight" style="background-image:url(images/bg_2.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center">
+		          <div class="col-md-7 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>Designed for Hijabi Women</h2>
+			            <h1 class="mb-4 color-white">Modest Sportswear & Tailored Fitness Plans</h1>
+			            <p><a href="myshop.html" class="btn btn-primary">Explore Sportswear</a> <a href="pricing.html" class="btn btn-white">Training Plans</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+
+	      <div class="slider-item js-fullheight" style="background-image:url(images/bg_3.jpg);">
+	      	<div class="overlay"></div>
+	        <div class="container">
+	          <div class="row no-gutters slider-text align-items-center justify-content-end">
+		          <div class="col-md-6 ftco-animate">
+		          	<div class="text w-100">
+		          		<h2>Welcome to Aliaa Fit</h2>
+			            <h1 class="mb-4">Transform Your Health Through Sustainable Habits</h1>
+			            <p><a href="pricing.html" class="btn btn-primary">Subscribe Now</a> <a href="consultation-booking.html" class="btn btn-white">Free Trial</a></p>
+		            </div>
+		          </div>
+		        </div>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+		
+    <section class="ftco-section ftco-services">
+    	<div class="container">
+    		<div class="row">
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="services-card">
+              <div class="services-img" style="background-image: url(images/services-1.jpg);"></div>
+              <div class="services-content">
+                <div class="services-icon">
+                  <i class="fa fa-file-pdf-o"></i>
+                </div>
+                <h3 class="services-title">Training Programs</h3>
+                <p class="services-text">Downloadable PDF workout plans designed specifically for women, with options for home or gym workouts.</p>
+                <a href="coachingprograms.html" class="services-btn">View Programs</a>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="services-card">
+              <div class="services-img" style="background-image: url(images/services-2.jpg);"></div>
+              <div class="services-content">
+                <div class="services-icon">
+                  <i class="fa fa-play-circle"></i>
+                </div>
+                <h3 class="services-title">Video Courses</h3>
+                <p class="services-text">Short 5-6 minute workout videos perfect for busy schedules, with options for all fitness levels.</p>
+                <a href="video-workout-courses.html" class="services-btn">Watch Videos</a>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-4 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="services-card">
+              <div class="services-img" style="background-image: url(images/services-3.jpg);"></div>
+              <div class="services-content">
+                <div class="services-icon">
+                  <i class="fa fa-shopping-bag"></i>
+                </div>
+                <h3 class="services-title">Hijabi Sportswear</h3>
+                <p class="services-text">Modest, comfortable, and high-performance sportswear designed specifically for active Muslim women.</p>
+                <a href="myshop.html" class="services-btn">Shop Now</a>
+              </div>
+            </div>      
+          </div>
+        </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section ftco-no-pt ftco-no-pb bg-light">
+			<div class="container">
+				<div class="row no-gutters">
+					<div class="col-md-5 p-md-5 img img-2 mt-5 mt-md-0" style="background-image: url(images/coach-1.jpg);">
+					</div>
+					<div class="col-md-7 wrap-about py-4 py-md-5 ftco-animate">
+	          <div class="heading-section mb-5">
+	          	<div class="pl-md-5">
+		          	<span class="subheading mb-2">Welcome to Aliaa Fit</span>
+		            <h2 class="mb-2">Empowering Women of All Ages Through Fitness</h2>
+	            </div>
+	          </div>
+	          <div class="pl-md-5">
+							<p>Aliaa Fit was created to provide a safe, supportive fitness community for women and girls aged 12-60, with special focus on the needs of hijabi women. We believe fitness should be accessible, comfortable, and aligned with your values.</p>
+							<p>Our platform combines modest sportswear, tailored training programs, and expert guidance to help you achieve your fitness goals whether at home or in the gym. We're committed to creating an inclusive environment where every woman can thrive.</p>
+							<div class="founder d-flex align-items-center mt-5">
+								<div class="img" style="background-image: url(images/coach-1.jpg);"></div>
+								<div class="text pl-3">
+									<h3 class="mb-0">Aliaa Hassan</h3>
+									<span class="position">Founder & Head Coach</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="ftco-section ftco-no-pt ftco-no-pb">
+			<div class="container-fluid px-md-0">
+				<div class="row no-gutters">
+					<div class="col-md-3 d-flex align-items-stretch">
+						<div class="consultation w-100 text-center px-4 px-md-5">
+							<h3 class="mb-4">Our Events</h3>
+							<p>Stay motivated with live workshops, fun challenges, and community meet-ups designed to boost your fitness journey.</p>
+							<a href="consultation-booking.html" class="btn-custom">See Events</a>
+						</div>
+					</div>
+					<div class="col-md-6 d-flex align-items-stretch">
+						<div class="consultation consul w-100 px-4 px-md-5">
+							<div class="text-center">
+								<h3 class="mb-4">Free 15-Minute Consultation</h3>
+							</div>
+							<form action="#" class="appointment-form">
+								<div class="row">
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<input type="text" class="form-control" placeholder="First Name">
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<input type="text" class="form-control" placeholder="Last Name">
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="form-field">
+		          					<div class="select-wrap">
+		                      <div class="icon"><span class="fa fa-chevron-down"></span></div>
+		                      <select name="" id="" class="form-control">
+		                      	<option value="">Service Type</option>
+		                        <option value="">Personal Training</option>
+		                        <option value="">Nutrition Guidance</option>
+		                        <option value="">Program Selection</option>
+		                      </select>
+		                    </div>
+				              </div>
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="input-wrap">
+				            		<input type="text" class="form-control appointment_date" placeholder="Date">
+			            		</div>
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+										<div class="form-group">
+				    					<div class="input-wrap">
+				            		<input type="text" class="form-control appointment_time" placeholder="Time">
+			            		</div>
+				    				</div>
+									</div>
+									<div class="col-md-12 col-lg-6 col-xl-4">
+    <div class="form-group">
+        <a href="consultation-booking.html" class="btn btn-white py-2 px-4">Book Session</a>
+    </div>
+</div>
+								</div>
+		    			</form>
+		    	  </div>
+					</div>
+					<div class="col-md-3 d-flex align-items-stretch">
+						<div class="consultation w-100 text-center px-4 px-md-5">
+							<h3 class="mb-4">Membership Plans</h3>
+							<p>Choose Your Plan
+Select from our free content, PDF programs, video courses, or personalized subscription plans.</p>
+							<a href="pricing.html" class="btn-custom">View Perfect Fitness Plan</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+    <section class="ftco-section testimony-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">Success Stories</span>
+            <h2>What Our Members Say</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+            <div class="carousel-testimony owl-carousel">
+							<div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img" style="background-image: url(images/person_1.jpg)">
+                  </div>
+                  <div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <p>As a hijabi woman, finding comfortable sportswear was always a challenge. Aliaa Fit changed everything for me - both the clothing and workouts are perfect!</p>
+                    <p class="name">Fatima Ahmed</p>
+                    <span class="position">Student</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img" style="background-image: url(images/person_2.jpg)">
+                  </div>
+                  <div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <p>The 5-minute workout videos fit perfectly into my busy schedule as a working mom. I've never felt stronger or more confident!</p>
+                    <p class="name">Sarah Johnson</p>
+                    <span class="position">Marketing Manager</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img" style="background-image: url(images/person_3.jpg)">
+                  </div>
+                  <div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <p>I love that I can do these workouts at home while my kids are napping. The PDF plans are so easy to follow and effective.</p>
+                    <p class="name">Amina Yusuf</p>
+                    <span class="position">Homemaker</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img" style="background-image: url(images/person_4.jpg)">
+                  </div>
+                  <div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <p>The subscription plan gave me access to personalized coaching that transformed my fitness journey. Worth every penny!</p>
+                    <p class="name">Layla Mohammed</p>
+                    <span class="position">Teacher</span>
+                  </div>
+                </div>
+              </div>
+              <div class="item">
+                <div class="testimony-wrap d-flex">
+                  <div class="user-img" style="background-image: url(images/person_1.jpg)">
+                  </div>
+                  <div class="text pl-4">
+                  	<span class="quote d-flex align-items-center justify-content-center">
+                      <i class="fa fa-quote-left"></i>
+                    </span>
+                    <p>Finally, a fitness platform that understands the needs of Muslim women. The modest activewear is high quality and comfortable.</p>
+                    <p class="name">Noor Hassan</p>
+                    <span class="position">Entrepreneur</span>
+                  </div>
+                </div>
+              </div>
+						</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ftco-section">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">How It Works</h2>
+          </div>
+        </div>
+    		<div class="row">
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-diet"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Choose Your Plan</h3>
+                <p>Select from our free content, PDF programs, video courses, or personalized subscription plans.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-workout"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Follow Your Program</h3>
+                <p>Access your chosen workouts, videos, and resources through your personalized dashboard.</p>
+              </div>
+            </div>    
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-diet-1"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Track Your Progress</h3>
+                <p>Monitor your achievements and adjust your plan as needed with our progress tracking tools.</p>
+              </div>
+            </div>      
+          </div>
+          <div class="col-md-3 d-flex services align-self-stretch px-4 ftco-animate">
+            <div class="d-block text-center">
+              <div class="icon d-flex justify-content-center align-items-center">
+            		<span class="flaticon-first"></span>
+              </div>
+              <div class="media-body p-2 mt-3">
+                <h3 class="heading">Achieve Your Goals</h3>
+                <p>Reach your fitness targets and enjoy the confidence that comes with a healthier lifestyle.</p>
+              </div>
+            </div>      
+          </div>
+        </div>
+    	</div>
+    </section>
+
+		<section class="ftco-section ftco-no-pb bg-light">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">Transformations</span>
+            <h2>Inspiring Success Stories</h2>
+          </div>
+        </div>
+        <div class="row ftco-animate">
+          <div class="col-md-12">
+          	<div class="carousel-stories owl-carousel">
+							<div class="item">
+								<div class="row justify-content-center">
+									<div class="col-md-11">
+										<div class="stories-wrap d-md-flex">
+											<div class="img" style="background-image: url(images/person-1.jpg);"></div>
+											<div class="text p-4 py-xl-5 px-xl-5 d-flex align-items-center">
+												<div class="desc w-100">
+													<p>"Before discovering Aliaa Fit, I struggled to find workout routines that respected my values as a Muslim woman. The modest sportswear and home workout programs have completely transformed my fitness journey."</p>
+													<p class="mb-5">"I've lost 15kg in 6 months and gained so much confidence. The community support and expert guidance made all the difference."</p>
+													<div class="pt-4">
+														<p class="name mb-0">Mariam Abdullah</p>
+														<span class="position">Lost 15kg in 6 months</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="row justify-content-center">
+									<div class="col-md-11">
+										<div class="stories-wrap d-md-flex">
+											<div class="img" style="background-image: url(images/person-2.jpg);"></div>
+											<div class="text p-4 py-xl-5 px-xl-5 d-flex align-items-center">
+												<div class="desc w-100">
+													<p>"As a busy professional, I never had time for the gym. The short video courses at Aliaa Fit changed everything - I can complete effective workouts during my lunch break."</p>
+													<p class="mb-5">"The personalized subscription plan helped me target my problem areas, and the nutrition guidance transformed my eating habits."</p>
+													<div class="pt-4">
+														<p class="name mb-0">Nadia Rahman</p>
+														<span class="position">Gained strength & energy</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="item">
+								<div class="row justify-content-center">
+									<div class="col-md-11">
+										<div class="stories-wrap d-md-flex">
+											<div class="img" style="background-image: url(images/person-3.jpg);"></div>
+											<div class="text p-4 py-xl-5 px-xl-5 d-flex align-items-center">
+												<div class="desc w-100">
+													<p>"I started with the free blog content and was so impressed that I signed up for the premium subscription. The live consultations with coaches helped me overcome my fitness plateaus."</p>
+													<p class="mb-5">"The community of women supporting each other is incredible. I've made friends and found accountability partners through the platform."</p>
+													<div class="pt-4">
+														<p class="name mb-0">Zainab Ali</p>
+														<span class="position">Premium member for 1 year</span>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+          </div>
+        </div>
+      </div>
+    </section>
+		
+		<section class="ftco-intro" style="background-image: url(images/bg_1.jpg);" data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-9">
+						<h2>Start Your Fitness Journey Today</h2>
+						<p class="mb-0">Your health and wellness are our priority with tailored programs for women of all ages.</p>
+						<p></p>
+					</div>
+					<div class="col-md-3 d-flex align-items-center">
+						<p class="mb-0"><a href="consultation-booking.html" class="btn btn-white px-4 py-3">Free Consultation</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+          	<span class="subheading mb-3">Membership Plans</span>
+            <h2>Choose Your Perfect Fitness Plan</h2>
+          </div>
+        </div>
+    		<div class="row">
+    			<div class="col-md-6 col-lg-3 ftco-animate mb-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Free</h3>
+                <p class="pricing-subtitle">Basic Access</p>
+                <div class="pricing-price">
+                  <sup>$</sup>0
+                </div>
+              </div>
+              <div class="pricing-features">
+                <ul>
+                  <li><span class="fa fa-check"></span>Access to Blog Articles</li>
+                  <li><span class="fa fa-check"></span>Free Workout Videos</li>
+                  <li><span class="fa fa-check"></span>15-Min Consultation</li>
+                  <li><span class="fa fa-times"></span>PDF Programs</li>
+                  <li><span class="fa fa-times"></span>Live Coaching</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <a href="#" class="btn pricing-btn">Get Started</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3 ftco-animate mb-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Basic</h3>
+                <p class="pricing-subtitle">Monthly Programs</p>
+                <div class="pricing-price">
+                  <sup>$</sup>19
+                </div>
+              </div>
+              <div class="pricing-features">
+                <ul>
+                  <li><span class="fa fa-check"></span>All Free Features</li>
+                  <li><span class="fa fa-check"></span>PDF Workout Plans</li>
+                  <li><span class="fa fa-check"></span>Video Course Library</li>
+                  <li><span class="fa fa-times"></span>Live Coaching</li>
+                  <li><span class="fa fa-times"></span>Customized Plans</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <a href="#" class="btn pricing-btn">Get Started</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3 ftco-animate mb-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Premium</h3>
+                <p class="pricing-subtitle">Personalized Coaching</p>
+                <div class="pricing-price">
+                  <sup>$</sup>49
+                </div>
+              </div>
+              <div class="pricing-features">
+                <ul>
+                  <li><span class="fa fa-check"></span>All Basic Features</li>
+                  <li><span class="fa fa-check"></span>Monthly Live Coaching</li>
+                  <li><span class="fa fa-check"></span>Customized Workout Plans</li>
+                  <li><span class="fa fa-check"></span>Nutrition Guidance</li>
+                  <li><span class="fa fa-check"></span>Progress Tracking</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <a href="#" class="btn pricing-btn">Get Started</a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col-md-6 col-lg-3 ftco-animate mb-4">
+            <div class="pricing-card">
+              <div class="pricing-header">
+                <h3 class="pricing-title">Elite</h3>
+                <p class="pricing-subtitle">Complete Transformation</p>
+                <div class="pricing-price">
+                  <sup>$</sup>89
+                </div>
+              </div>
+              <div class="pricing-features">
+                <ul>
+                  <li><span class="fa fa-check"></span>All Premium Features</li>
+                  <li><span class="fa fa-check"></span>Weekly 1-on-1 Sessions</li>
+                  <li><span class="fa fa-check"></span>Fully Customized Program</li>
+                  <li><span class="fa fa-check"></span>24/7 Coach Support</li>
+                  <li><span class="fa fa-check"></span>Sportswear Discount</li>
+                </ul>
+              </div>
+              <div class="pricing-footer">
+                <a href="#" class="btn pricing-btn">Get Started</a>
+              </div>
+            </div>
+          </div>
+	      </div>
+    	</div>
+    </section>
+
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h2>Latest from Our Blog</h2>
+            <span class="subheading">Fitness Tips & Nutrition Advice</span>
+          </div>
+        </div>
+        <div class="row d-flex">
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <div class="blog-card">
+                <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_1.jpg');">
+                </a>
+                <div class="blog-card-content">
+                  <div class="blog-meta">
+                    <span><i class="fa fa-calendar"></i> May 15, 2023</span>
+                  </div>
+                  <h3 class="heading"><a href="blog-single.html">5 Effective Home Workouts for Busy Women</a></h3>
+                  <p class="blog-excerpt">Discover time-efficient workout routines designed specifically for women with demanding schedules.</p>
+                  <a href="blog-single.html" class="blog-read-more">Read More <i class="fa fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <div class="blog-card">
+                <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_2.jpg');">
+                </a>
+                <div class="blog-card-content">
+                  <div class="blog-meta">
+                    <span><i class="fa fa-calendar"></i> June 2, 2023</span>
+                  </div>
+                  <h3 class="heading"><a href="blog-single.html">Nutrition Tips for Sustainable Weight Loss</a></h3>
+                  <p class="blog-excerpt">Learn how to create healthy eating habits that support your fitness goals without restrictive diets.</p>
+                  <a href="blog-single.html" class="blog-read-more">Read More <i class="fa fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex ftco-animate">
+            <div class="blog-entry align-self-stretch">
+              <div class="blog-card">
+                <a href="blog-single.html" class="block-20 rounded" style="background-image: url('images/image_3.jpg');">
+                </a>
+                <div class="blog-card-content">
+                  <div class="blog-meta">
+                    <span><i class="fa fa-calendar"></i> June 18, 2023</span>
+                  </div>
+                  <h3 class="heading"><a href="blog-single.html">Choosing the Right Sportswear for Your Workout</a></h3>
+                  <p class="blog-excerpt">Find out how to select modest, comfortable activewear that enhances your performance.</p>
+                  <a href="blog-single.html" class="blog-read-more">Read More <i class="fa fa-arrow-right"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+			<div class="container">
+				<div class="row justify-content-center">
+					<div class="col-10 col-lg-6">
+						<div class="subscribe mb-5">
+							<form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4 col-lg-5">
+						<div class="row">
+							<div class="col-md-12 col-lg-8 mb-md-0 mb-4">
+								<h2 class="footer-heading"><a href="index.html" class="logo">Aliaa<span style="color: #D9A299;">Fit</span></a></h2>
+								<p>Empowering women and girls through fitness, with specialized programs and modest sportswear for hijabi women.</p>
+								<a href="about.html">read more <span class="ion-ios-arrow-round-forward"></span></a>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 col-lg-7">
+						<div class="row">
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Services</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Training Programs</a></li>
+		              <li><a href="#" class="py-1 d-block">Video Courses</a></li>
+		              <li><a href="#" class="py-1 d-block">Live Coaching</a></li>
+		              <li><a href="#" class="py-1 d-block">Sportswear</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">About</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Our Story</a></li>
+		              <li><a href="#" class="py-1 d-block">Coaches</a></li>
+		              <li><a href="#" class="py-1 d-block">Careers</a></li>
+		              <li><a href="#" class="py-1 d-block">Blog</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Resources</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">FAQ</a></li>
+		              <li><a href="#" class="py-1 d-block">Support</a></li>
+		              <li><a href="#" class="py-1 d-block">Privacy</a></li>
+		              <li><a href="#" class="py-1 d-block">Terms</a></li>
+		            </ul>
+							</div>
+							<div class="col-md-3 mb-md-0 mb-4 border-left">
+								<h2 class="footer-heading">Connect</h2>
+								<ul class="list-unstyled">
+		              <li><a href="#" class="py-1 d-block">Facebook</a></li>
+		              <li><a href="#" class="py-1 d-block">Instagram</a></li>
+		              <li><a href="#" class="py-1 d-block">WhatsApp</a></li>
+		              <li><a href="#" class="py-1 d-block">YouTube</a></li>
+		            </ul>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="row mt-5">
+          <div class="col-md-6 col-lg-8">
+            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Aliaa Fit - Empowering Women's Fitness
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-right">
+          	<p class="mb-0 list-unstyled">
+          		<a class="mr-md-3" href="#">Terms</a>
+          		<a class="mr-md-3" href="#">Privacy</a>
+          		<a class="mr-md-3" href="#">Contact</a>
+          	</p>
+          </div>
+        </div>
+			</div>
+		</footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <!-- إضافة SweetAlert JS -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.easing.1.3.js"></script>
+  <script src="js/jquery.waypoints.min.js"></script>
+  <script src="js/jquery.stellar.min.js"></script>
+  <script src="js/jquery.animateNumber.min.js"></script>
+  <script src="js/bootstrap-datepicker.js"></script>
+  <script src="js/jquery.timepicker.min.js"></script>
+  <script src="js/owl.carousel.min.js"></script>
+  <script src="js/jquery.magnific-popup.min.js"></script>
+  <script src="js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="js/google-map.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    // الكود المحدث ليكون مشابهًا للكود الثاني
+    let favorites = [];
+    let cart = [];
+    let isCartOpen = false;
+    let isFavoritesOpen = false;
+    
+    // تحميل البيانات من localStorage
+    function loadData() {
+      const savedCart = localStorage.getItem('cart');
+      if (savedCart) {
+        cart = JSON.parse(savedCart);
+        updateCartCount();
+        updateCartDropdown();
+      }
+      
+      const savedFavorites = localStorage.getItem('favorites');
+      if (savedFavorites) {
+        favorites = JSON.parse(savedFavorites);
+        updateFavoritesCount();
+        updateFavoritesDropdown();
+      }
+    }
+    
+    // تحديث عدد المنتجات في السلة (عدد المنتجات المختلفة)
+    function updateCartCount() {
+      document.getElementById("cartCount").innerText = cart.length;
+    }
+    
+    function updateFavoritesCount() {
+      document.getElementById("favoritesCount").innerText = favorites.length;
+    }
+    
+    // تحديث محتويات السلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+    function updateCartDropdown() {
+      const cartItemsList = document.getElementById("cartItemsList");
+      const cartTotal = document.getElementById("cartTotal");
+      
+      if (cart.length === 0) {
+        cartItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your cart is empty</p>';
+        cartTotal.textContent = "$0";
+        return;
+      }
+      
+      let itemsHTML = '';
+      let total = 0;
+      
+      cart.forEach((item, index) => {
+        // استخراج السعر من المنتج - باستخدام نفس المنطق لجميع المنتجات
+        let price = 0;
+        if (typeof item.price === 'string') {
+          price = parseFloat(item.price.replace('$', '').replace(/[^\d.-]/g, ''));
+        } else if (typeof item.price === 'number') {
+          price = item.price;
+        }
+        
+        const itemTotal = price * (item.quantity || 1);
+        total += itemTotal;
+        
+        let mediaHTML = '';
+        if (item.type === 'video') {
+          mediaHTML = `
+            <div class="video-thumbnail" style="background-image: url('${item.image}');">
+              <i class="fa fa-play-circle"></i>
+            </div>
+          `;
+        } else if (item.type === 'blog') {
+          mediaHTML = `
+            <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+             
+            </div>
+          `;
+        } else {
+          mediaHTML = `
+            <img src="${item.image}" alt="${item.title}">
+          `;
+        }
+        
+        // بناء معلومات المنتج بناءً على نوعه
+        let itemInfo = '';
+        
+        // للمنتجات من صفحة single-product.html فقط، نعرض Qty:
+        // تم التعديل ليشمل فقط المنتجات من single-product.html
+        if (item.source === 'single-product') {
+          itemInfo += `Qty: ${item.quantity || 1}`;
+        }
+        
+        // إضافة معلومات إضافية للمنتجات الأخرى
+        if (item.format) {
+          itemInfo += `${itemInfo ? ' | ' : ''}Format: ${item.format}`;
+        }
+        if (item.access) {
+          itemInfo += `${itemInfo ? ' | ' : ''}Access: ${item.access}`;
+        }
+        if (item.level) {
+          itemInfo += `${itemInfo ? ' | ' : ''}Level: ${item.level}`;
+        }
+        if (item.size && item.size !== 'N/A') {
+          itemInfo += `${itemInfo ? ' | ' : ''}Size: ${item.size}`;
+        }
+        
+        itemsHTML += `
+          <div class="cart-item">
+            <div class="cart-item-media">
+              ${mediaHTML}
+            </div>
+            <div class="cart-item-details">
+              <div class="cart-item-title">${item.title}</div>
+              ${itemInfo ? `<div class="cart-item-info">${itemInfo}</div>` : ''}
+              <div class="cart-item-info">$${itemTotal.toFixed(2)}</div>
+            </div>
+            <button class="cart-item-remove" data-index="${index}">&times;</button>
+          </div>
+        `;
+      });
+      
+      cartItemsList.innerHTML = itemsHTML;
+      cartTotal.textContent = `$${total.toFixed(2)}`;
+      
+      // إضافة مستمعي الأحداث لأزرار الإزالة
+      document.querySelectorAll('.cart-item-remove').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const index = parseInt(this.getAttribute('data-index'));
+          removeFromCart(index);
+        });
+      });
+    }
+    
+    // تحديث محتويات المفضلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+    function updateFavoritesDropdown() {
+      const favoritesItemsList = document.getElementById("favoritesItemsList");
+      
+      if (favorites.length === 0) {
+        favoritesItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your favorites list is empty</p>';
+        return;
+      }
+      
+      let itemsHTML = '';
+      
+      favorites.forEach((item, index) => {
+        let mediaHTML = '';
+        if (item.type === 'video') {
+          mediaHTML = `
+            <div class="video-thumbnail" style="background-image: url('${item.image}');">
+              <i class="fa fa-play-circle"></i>
+            </div>
+          `;
+        } else if (item.type === 'blog') {
+          mediaHTML = `
+            <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+             
+            </div>
+          `;
+        } else {
+          mediaHTML = `
+            <img src="${item.image}" alt="${item.title}">
+          `;
+        }
+        
+        let itemType = '';
+        if (item.type === 'product') {
+          itemType = 'Item';
+        } else if (item.type === 'blog') {
+          itemType = 'Blog Post';
+        } else if (item.type === 'video') {
+          itemType = 'Video Course';
+        } else if (item.type === 'course') {
+          itemType = 'Training Program';
+        }
+        
+        itemsHTML += `
+          <div class="favorite-item">
+            <div class="favorite-item-media">
+              ${mediaHTML}
+            </div>
+            <div class="favorite-item-details">
+              <div class="favorite-item-title">${item.title}</div>
+              ${itemType ? `<div class="favorite-item-info">${itemType}</div>` : ''}
+            </div>
+            <button class="favorite-item-remove" data-index="${index}">&times;</button>
+          </div>
+        `;
+      });
+      
+      favoritesItemsList.innerHTML = itemsHTML;
+      
+      // إضافة مستمعي الأحداث لأزرار الإزالة
+      document.querySelectorAll('.favorite-item-remove').forEach(button => {
+        button.addEventListener('click', function(e) {
+          e.stopPropagation();
+          const index = parseInt(this.getAttribute('data-index'));
+          removeFromFavorites(index);
+        });
+      });
+    }
+    
+    // استبدال alert العادي بـ SweetAlert
+    function showSweetAlert(icon, title, text = '', timer = 1500) {
+      Swal.fire({
+        icon: icon,
+        title: title,
+        text: text,
+        timer: timer,
+        showConfirmButton: false,
+        position: 'top-end',
+        toast: true,
+        background: '#f8f9fa',
+        customClass: {
+          popup: 'animated fadeInDown'
+        }
+      });
+    }
+
+    // استبدال confirm العادي بـ SweetAlert
+    function showSweetConfirm(title, text, confirmButtonText, cancelButtonText) {
+      return Swal.fire({
+        title: title,
+        text: text,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: confirmButtonText,
+        cancelButtonText: cancelButtonText
+      });
+    }
+    
+    // إزالة عنصر من السلة
+    async function removeFromCart(index) {
+      if (index >= 0 && index < cart.length) {
+        // تأكيد الإزالة باستخدام SweetAlert
+        const result = await showSweetConfirm(
+          'Remove Item', 
+          `Are you sure you want to remove ${cart[index].title} from your cart?`,
+          'Yes, remove it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          cart.splice(index, 1);
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDropdown();
+          
+          showSweetAlert('success', 'Item removed from cart!');
+        }
+      }
+    }
+    
+    // إزالة عنصر من المفضلة
+    async function removeFromFavorites(index) {
+      if (index >= 0 && index < favorites.length) {
+        let removedItem = favorites[index];
+        favorites.splice(index, 1);
+        updateFavoritesCount();
+        updateFavoritesDropdown();
+        saveFavorites();
+        showSweetAlert('success', `💔 ${removedItem.title} removed from favorites!`);
+      }
+    }
+    
+    // إفراغ السلة بالكامل
+    async function clearCart() {
+      if (cart.length === 0) {
+        showSweetAlert('info', 'Your cart is already empty!');
+        return;
+      }
+      
+      const result = await showSweetConfirm(
+        'Clear Cart', 
+        'Are you sure you want to clear your entire cart?',
+        'Yes, clear it!',
+        'Cancel'
+      );
+      
+      if (result.isConfirmed) {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        updateCartDropdown();
+        
+        showSweetAlert('success', 'Your cart has been cleared!');
+      }
+    }
+    
+    // إفراغ المفضلة بالكامل
+    async function clearFavorites() {
+      if (favorites.length === 0) {
+        showSweetAlert('info', 'Your favorites list is already empty!');
+        return;
+      }
+      
+      const result = await showSweetConfirm(
+        'Clear Favorites', 
+        'Are you sure you want to clear your entire favorites list?',
+        'Yes, clear it!',
+        'Cancel'
+      );
+      
+      if (result.isConfirmed) {
+        favorites = [];
+        updateFavoritesCount();
+        updateFavoritesDropdown();
+        saveFavorites();
+        
+        showSweetAlert('success', 'Your favorites list has been cleared!');
+      }
+    }
+    
+    // حفظ المفضلة في localStorage
+    function saveFavorites(){
+      localStorage.setItem('favorites', JSON.stringify(favorites));
+    }
+    
+    // المتابعة إلى الدفع
+    function proceedToCheckout() {
+      if (cart.length === 0) {
+        showSweetAlert('warning', 'Your cart is empty!');
+        return;
+      }
+      
+      // حفظ السلة مؤقتًا للدفع
+      localStorage.setItem('checkoutCart', JSON.stringify(cart));
+      
+      // الانتقال إلى صفحة الدفع
+      window.location.href = "checkout.html";
+    }
+
+    // تهيئة الصفحة
+    document.addEventListener('DOMContentLoaded', function() {
+      loadData();
+      
+      // عرض/إخفاء السلة في القائمة
+      document.getElementById('cartButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        isCartOpen = !isCartOpen;
+        document.getElementById('cartDropdown').classList.toggle('show');
+        
+        // إغلاق المفضلة إذا كانت مفتوحة
+        if (isFavoritesOpen) {
+          document.getElementById('favoritesDropdown').classList.remove('show');
+          isFavoritesOpen = false;
+        }
+      });
+      
+      // عرض/إخفاء المفضلة في القائمة
+      document.getElementById('favoritesButton').addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        isFavoritesOpen = !isFavoritesOpen;
+        document.getElementById('favoritesDropdown').classList.toggle('show');
+        
+        // إغلاق السلة إذا كانت مفتوحة
+        if (isCartOpen) {
+          document.getElementById('cartDropdown').classList.remove('show');
+          isCartOpen = false;
+        }
+      });
+      
+      // إغلاق السلة والمفضلة عند النقر خارجها
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.cart-dropdown')) {
+          document.getElementById('cartDropdown').classList.remove('show');
+          isCartOpen = false;
+        }
+        
+        if (!e.target.closest('.favorites-dropdown')) {
+          document.getElementById('favoritesDropdown').classList.remove('show');
+          isFavoritesOpen = false;
+        }
+      });
+    });
+  </script>
+    
+  </body>
+</html>

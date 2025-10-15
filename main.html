@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Thank You - AliaaFit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/4.5.6/css/ionicons.min.css">
+ 
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- إضافة SweetAlert CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+      /* تنسيقات السلة في القائمة */
+      .cart-dropdown, .favorites-dropdown {
+        position: relative;
+      }
+      .cart-content, .favorites-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        width: 350px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 15px;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+      .cart-content.show, .favorites-content.show {
+        display: block;
+      }
+      .cart-item, .favorite-item {
+        display: flex;
+        align-items: flex-start;
+        padding: 10px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .cart-item-media, .favorite-item-media {
+        flex-shrink: 0;
+        margin-right: 10px;
+      }
+      .cart-item img, .favorite-item img {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 5px;
+      }
+      .video-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .video-thumbnail .fa-play-circle {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .video-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      /* تنسيق خاص للمدونات في المفضلة */
+      .blog-thumbnail {
+        width: 60px;
+        height: 60px;
+        border-radius: 5px;
+        position: relative;
+        overflow: hidden;
+        background-color: #f0f0f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-size: cover;
+        background-position: center;
+      }
+      .blog-thumbnail .fa-file-text-o {
+        font-size: 24px;
+        color: #FFCFEF;
+        z-index: 2;
+      }
+      .blog-thumbnail::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.3);
+      }
+      .cart-item-details, .favorite-item-details {
+        flex-grow: 1;
+        min-width: 0;
+        padding-right: 10px;
+      }
+      .cart-item-title, .favorite-item-title {
+        font-weight: 600;
+        font-size: 14px;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      .cart-item-info, .favorite-item-info {
+        font-size: 12px;
+        color: #666;
+        margin-bottom: 5px;
+      }
+      .cart-item-remove, .favorite-item-remove {
+        background: none;
+        border: none;
+        color: #dc3545;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: bold;
+        padding: 0 5px;
+        align-self: center;
+      }
+      .cart-total {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 15px;
+        padding-top: 15px;
+        border-top: 1px solid #eee;
+        font-weight: 600;
+      }
+      .cart-actions, .favorites-actions {
+        margin-top: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .checkout-btn {
+        background: #28a745;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .clear-cart-btn, .clear-favorites-btn {
+        background: #dc3545;
+        color: white;
+        border: none;
+        padding: 8px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      /* تنسيقات للمفضلة في القائمة */
+      .favorites-count {
+        background: red;
+        color: white;
+        border-radius: 50%;
+        padding: 2px 6px;
+        font-size: 12px;
+        position: relative;
+        top: -10px;
+        right: 5px;
+      }
+
+      /* زر العودة للأعلى */
+      #scrollBtn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        background-color: #1089ff;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        padding: 12px 16px;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        transition: transform 0.3s, background-color 0.3s;
+        z-index: 9999;
+        display: none;
+      }
+
+      #scrollBtn:hover {
+        background-color: #0a6ed1;
+        transform: scale(1.1);
+      }
+      
+      /* تحسينات للهيرو */
+      .hero-wrap {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: relative;
+        background-size: cover;
+        background-position: center;
+        min-height: 400px;
+        display: flex;
+        align-items: flex-end;
+      }
+      .hero-wrap .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .slider-text {
+        position: relative;
+        z-index: 1;
+      }
+      .breadcrumbs {
+        font-size: 14px;
+        margin-bottom: 10px;
+      }
+      .breadcrumbs a {
+        color: #fff;
+        text-decoration: none;
+      }
+      .breadcrumbs span {
+        color: rgba(255, 255, 255, 0.8);
+      }
+      .hero-wrap h1 {
+        color: #fff;
+        font-size: 40px;
+        font-weight: 700;
+      }
+      
+      /* تنسيقات خاصة بصفحة الشكر */
+      .thank-you-section {
+        padding: 80px 0;
+        text-align: center;
+        background-color: #f8f9fa;
+      }
+      .thank-you-icon {
+        font-size: 80px;
+        color: #28a745;
+        margin-bottom: 30px;
+      }
+      .thank-you-section h1 {
+        color: #28a745;
+        margin-bottom: 20px;
+      }
+      .thank-you-section p {
+        font-size: 18px;
+        margin-bottom: 30px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .order-details {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        max-width: 600px;
+        margin: 0 auto 30px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      }
+      .order-details h3 {
+        margin-bottom: 20px;
+        color: #333;
+      }
+      .order-info {
+        text-align: left;
+        margin-bottom: 20px;
+      }
+      .order-info p {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+        font-size: 16px;
+      }
+      .order-info .label {
+        font-weight: 600;
+        color: #555;
+      }
+      .btn-group {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+      .btn-custom {
+        display: inline-block;
+        padding: 12px 30px;
+        border-radius: 5px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+      .btn-primary {
+        background: #1089ff;
+        color: white;
+      }
+      .btn-primary:hover {
+        background: #0a6ed1;
+        color: white;
+      }
+      .btn-outline {
+        background: transparent;
+        color: #1089ff;
+        border: 2px solid #1089ff;
+      }
+      .btn-outline:hover {
+        background: #1089ff;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    
+    <!-- زر العودة للأعلى -->
+    <button id="scrollBtn" title="Go to top">
+      <i class="fa fa-arrow-up"></i>
+    </button>
+    
+    <div class="wrap">
+      <div class="container">
+        <div class="row justify-content-between">
+          <div class="col d-flex align-items-center">
+            <p class="mb-0 phone"><span class="mailus">Phone no:</span> <a href="#">+00 1234 567</a> or <span class="mailus">email us:</span> <a href="#">emailsample@email.com</a></p>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <div class="social-media">
+              <p class="mb-0 d-flex">
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
+                <a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">Aliaa<span style="color: #D9A299;">Fit<i class="fa fa-heart"></i></span></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="fa fa-bars"></span> Menu
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
+            <li class="nav-item"><a href="myshop.html" class="nav-link">Sportswear</a></li>
+            <li class="nav-item"><a href="coachingprograms.html" class="nav-link">Training Programs</a></li>
+            <li class="nav-item"><a href="services.html" class="nav-link">Services</a></li>
+            <li class="nav-item"><a href="consultation-booking.html" class="nav-link">Live Consultation</a></li>
+            <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
+            <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+            <li class="nav-item"><a href="order-tracking.html" class="nav-link">Track Order</a></li>
+
+            <!-- زر المفضلة في الناف بار -->
+            <li class="nav-item favorites-dropdown">
+              <a href="#" class="nav-link" id="favoritesButton"><i class="fa fa-heart" style="color: red;"></i> Favorites (<span id="favoritesCount">0</span>)</a>
+              <div class="favorites-content" id="favoritesDropdown">
+                <div id="favoritesItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="favorites-actions">
+                  <button class="clear-favorites-btn" onclick="clearFavorites()">Clear All Favorites</button>
+                </div>
+              </div>
+            </li>
+            <!-- زر السلة في الناف بار -->
+            <li class="nav-item cart-dropdown">
+              <a href="#" class="nav-link" id="cartButton"><i class="fa fa-shopping-cart"></i> Cart (<span id="cartCount">0</span>)</a>
+              <div class="cart-content" id="cartDropdown">
+                <div id="cartItemsList">
+                  <!-- سيتم تعبئة العناصر هنا ديناميكيًا -->
+                </div>
+                <div class="cart-total">
+                  <span>Total:</span>
+                  <span id="cartTotal">$0</span>
+                </div>
+                <div class="cart-actions">
+                  <button class="clear-cart-btn" onclick="clearCart()">Clear Cart</button>
+                  <button class="checkout-btn" onclick="proceedToCheckout()">Checkout</button>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+    <!-- قسم الهيرو -->
+    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg'); background-color: #f8f9fa; min-height: 400px; display: flex; align-items: center;">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text align-items-center justify-content-center">
+          <div class="col-md-9 ftco-animate text-center">
+            <p class="breadcrumbs mb-2"><span class="mr-2"><a href="index.html">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>thank You <i class="ion-ios-arrow-forward"></i></span> </p>
+            <h1 class="mb-0 bread" style="color: white; font-size: 48px;">Thank You</h1>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- قسم الشكر -->
+    <section class="thank-you-section">
+      <div class="container">
+        <div class="thank-you-icon">
+          <i class="fa fa-check-circle"></i>
+        </div>
+        <h1>Payment Successful!</h1>
+        <p>Thank you for your purchase. Your order has been processed successfully and you will receive a confirmation email shortly.</p>
+        
+        <div class="order-details">
+          <h3>Order Details</h3>
+          <div class="order-info">
+            <p><span class="label">Order ID:</span> <span id="orderId">#ALF-2023-00125</span></p>
+            <p><span class="label">Date:</span> <span id="orderDate">November 15, 2023</span></p>
+            <p><span class="label">Total Amount:</span> <span id="orderTotal">$129.99</span></p>
+            <p><span class="label">Payment Method:</span> <span id="paymentMethod">Credit Card</span></p>
+            <p><span class="label">Status:</span> <span id="orderStatus" style="color: #28a745; font-weight: 600;">Completed</span></p>
+          </div>
+        </div>
+        
+        <div class="btn-group">
+          <a href="index.html" class="btn-custom btn-primary">Return to Home</a>
+          <a href="order-tracking.html" class="btn-custom btn-outline">Track Your Order</a>
+          <a href="myshop.html" class="btn-custom btn-outline">Continue Shopping</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-10 col-lg-6">
+            <div class="subscribe mb-5">
+              <form action="#" class="subscribe-form">
+                <div class="form-group d-flex">
+                  <input type="text" class="form-control rounded-left" placeholder="Enter email address">
+                  <input type="submit" value="Subscribe" class="form-control submit px-3">
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-lg-5">
+            <div class="row">
+              <div class="col-md-12 col-lg-8 mb-md-0 mb-4">
+                <h2 class="footer-heading"><a href="#" class="logo">Alia<span>Fit</span></a></h2>
+                <p>Empowering women and girls through fitness, with specialized programs and modest sportswear for hijabi women.</p>
+                <a href="about.html">read more <span class="ion-ios-arrow-round-forward"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-7">
+            <div class="row">
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Services</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Training Programs</a></li>
+                  <li><a href="#" class="py-1 d-block">Video Courses</a></li>
+                  <li><a href="#" class="py-1 d-block">Live Coaching</a></li>
+                  <li><a href="#" class="py-1 d-block">Sportswear</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">About</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Our Story</a></li>
+                  <li><a href="#" class="py-1 d-block">Coaches</a></li>
+                  <li><a href="#" class="py-1 d-block">Careers</a></li>
+                  <li><a href="#" class="py-1 d-block">Blog</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Resources</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">FAQ</a></li>
+                  <li><a href="#" class="py-1 d-block">Support</a></li>
+                  <li><a href="#" class="py-1 d-block">Privacy</a></li>
+                  <li><a href="#" class="py-1 d-block">Terms</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-md-0 mb-4 border-left">
+                <h2 class="footer-heading">Connect</h2>
+                <ul class="list-unstyled">
+                  <li><a href="#" class="py-1 d-block">Facebook</a></li>
+                  <li><a href="#" class="py-1 d-block">Instagram</a></li>
+                  <li><a href="#" class="py-1 d-block">WhatsApp</a></li>
+                  <li><a href="#" class="py-1 d-block">YouTube</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-5">
+          <div class="col-md-6 col-lg-8">
+            <p class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Alia Fit - Empowering Women's Fitness
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+          </div>
+          <div class="col-md-6 col-lg-4 text-md-right">
+            <p class="mb-0 list-unstyled">
+              <a class="mr-md-3" href="#">Terms</a>
+              <a class="mr-md-3" href="#">Privacy</a>
+              <a class="mr-md-3" href="#">Contact</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- loader -->
+    <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+    <!-- إضافة SweetAlert JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      // الكود المحدث ليكون مشابهًا للكود الثاني
+      let favorites = [];
+      let cart = [];
+      let isCartOpen = false;
+      let isFavoritesOpen = false;
+      
+      // تحميل البيانات من localStorage
+      function loadData() {
+        const savedCart = localStorage.getItem('cart');
+        if (savedCart) {
+          cart = JSON.parse(savedCart);
+          updateCartCount();
+          updateCartDropdown();
+        }
+        
+        const savedFavorites = localStorage.getItem('favorites');
+        if (savedFavorites) {
+          favorites = JSON.parse(savedFavorites);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+        }
+      }
+      
+      // تحديث عدد المنتجات في السلة (عدد المنتجات المختلفة)
+      function updateCartCount() {
+        document.getElementById("cartCount").innerText = cart.length;
+      }
+      
+      function updateFavoritesCount() {
+        document.getElementById("favoritesCount").innerText = favorites.length;
+      }
+      
+      // تحديث محتويات السلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateCartDropdown() {
+        const cartItemsList = document.getElementById("cartItemsList");
+        const cartTotal = document.getElementById("cartTotal");
+        
+        if (cart.length === 0) {
+          cartItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your cart is empty</p>';
+          cartTotal.textContent = "$0";
+          return;
+        }
+        
+        let itemsHTML = '';
+        let total = 0;
+        
+        cart.forEach((item, index) => {
+          // استخراج السعر من المنتج - باستخدام نفس المنطق لجميع المنتجات
+          let price = 0;
+          if (typeof item.price === 'string') {
+            price = parseFloat(item.price.replace('$', '').replace(/[^\d.-]/g, ''));
+          } else if (typeof item.price === 'number') {
+            price = item.price;
+          }
+          
+          const itemTotal = price * (item.quantity || 1);
+          total += itemTotal;
+          
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          // بناء معلومات المنتج بناءً على نوعه
+          let itemInfo = '';
+          
+          // للمنتجات من صفحة single-product.html فقط، نعرض Qty:
+          // تم التعديل ليشمل فقط المنتجات من single-product.html
+          if (item.source === 'single-product') {
+            itemInfo += `Qty: ${item.quantity || 1}`;
+          }
+          
+          // إضافة معلومات إضافية للمنتجات الأخرى
+          if (item.format) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Format: ${item.format}`;
+          }
+          if (item.access) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Access: ${item.access}`;
+          }
+          if (item.level) {
+            itemInfo += `${itemInfo ? ' | ' : ''}Level: ${item.level}`;
+          }
+          if (item.size && item.size !== 'N/A') {
+            itemInfo += `${itemInfo ? ' | ' : ''}Size: ${item.size}`;
+          }
+          
+          itemsHTML += `
+            <div class="cart-item">
+              <div class="cart-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="cart-item-details">
+                <div class="cart-item-title">${item.title}</div>
+                ${itemInfo ? `<div class="cart-item-info">${itemInfo}</div>` : ''}
+                <div class="cart-item-info">$${itemTotal.toFixed(2)}</div>
+              </div>
+              <button class="cart-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        cartItemsList.innerHTML = itemsHTML;
+        cartTotal.textContent = `$${total.toFixed(2)}`;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.cart-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromCart(index);
+          });
+        });
+      }
+      
+      // تحديث محتويات المفضلة في القائمة - تم تحديثها لتكون مشابهة للكود الثاني
+      function updateFavoritesDropdown() {
+        const favoritesItemsList = document.getElementById("favoritesItemsList");
+        
+        if (favorites.length === 0) {
+          favoritesItemsList.innerHTML = '<p style="text-align: center; padding: 20px;">Your favorites list is empty</p>';
+          return;
+        }
+        
+        let itemsHTML = '';
+        
+        favorites.forEach((item, index) => {
+          let mediaHTML = '';
+          if (item.type === 'video') {
+            mediaHTML = `
+              <div class="video-thumbnail" style="background-image: url('${item.image}');">
+                <i class="fa fa-play-circle"></i>
+              </div>
+            `;
+          } else if (item.type === 'blog') {
+            mediaHTML = `
+              <div class="blog-thumbnail" style="background-image: url('${item.image}');">
+               
+              </div>
+            `;
+          } else {
+            mediaHTML = `
+              <img src="${item.image}" alt="${item.title}">
+            `;
+          }
+          
+          let itemType = '';
+          if (item.type === 'product') {
+            itemType = 'Item';
+          } else if (item.type === 'blog') {
+            itemType = 'Blog Post';
+          } else if (item.type === 'video') {
+            itemType = 'Video Course';
+          } else if (item.type === 'course') {
+            itemType = 'Training Program';
+          }
+          
+          itemsHTML += `
+            <div class="favorite-item">
+              <div class="favorite-item-media">
+                ${mediaHTML}
+              </div>
+              <div class="favorite-item-details">
+                <div class="favorite-item-title">${item.title}</div>
+                ${itemType ? `<div class="favorite-item-info">${itemType}</div>` : ''}
+              </div>
+              <button class="favorite-item-remove" data-index="${index}">&times;</button>
+            </div>
+          `;
+        });
+        
+        favoritesItemsList.innerHTML = itemsHTML;
+        
+        // إضافة مستمعي الأحداث لأزرار الإزالة
+        document.querySelectorAll('.favorite-item-remove').forEach(button => {
+          button.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const index = parseInt(this.getAttribute('data-index'));
+            removeFromFavorites(index);
+          });
+        });
+      }
+      
+      // استبدال alert العادي بـ SweetAlert
+      function showSweetAlert(icon, title, text = '', timer = 1500) {
+        Swal.fire({
+          icon: icon,
+          title: title,
+          text: text,
+          timer: timer,
+          showConfirmButton: false,
+          position: 'top-end',
+          toast: true,
+          background: '#f8f9fa',
+          customClass: {
+            popup: 'animated fadeInDown'
+          }
+        });
+      }
+
+      // استبدال confirm العادي بـ SweetAlert
+      function showSweetConfirm(title, text, confirmButtonText, cancelButtonText) {
+        return Swal.fire({
+          title: title,
+          text: text,
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: confirmButtonText,
+          cancelButtonText: cancelButtonText
+        });
+      }
+      
+      // إزالة عنصر من السلة
+      async function removeFromCart(index) {
+        if (index >= 0 && index < cart.length) {
+          // تأكيد الإزالة باستخدام SweetAlert
+          const result = await showSweetConfirm(
+            'Remove Item', 
+            `Are you sure you want to remove ${cart[index].title} from your cart?`,
+            'Yes, remove it!',
+            'Cancel'
+          );
+          
+          if (result.isConfirmed) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            updateCartDropdown();
+            
+            showSweetAlert('success', 'Item removed from cart!');
+          }
+        }
+      }
+      
+      // إزالة عنصر من المفضلة
+      async function removeFromFavorites(index) {
+        if (index >= 0 && index < favorites.length) {
+          let removedItem = favorites[index];
+          favorites.splice(index, 1);
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          showSweetAlert('success', `💔 ${removedItem.title} removed from favorites!`);
+        }
+      }
+      
+      // إفراغ السلة بالكامل
+      async function clearCart() {
+        if (cart.length === 0) {
+          showSweetAlert('info', 'Your cart is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Cart', 
+          'Are you sure you want to clear your entire cart?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          cart = [];
+          localStorage.setItem('cart', JSON.stringify(cart));
+          updateCartCount();
+          updateCartDropdown();
+          
+          showSweetAlert('success', 'Your cart has been cleared!');
+        }
+      }
+      
+      // إفراغ المفضلة بالكامل
+      async function clearFavorites() {
+        if (favorites.length === 0) {
+          showSweetAlert('info', 'Your favorites list is already empty!');
+          return;
+        }
+        
+        const result = await showSweetConfirm(
+          'Clear Favorites', 
+          'Are you sure you want to clear your entire favorites list?',
+          'Yes, clear it!',
+          'Cancel'
+        );
+        
+        if (result.isConfirmed) {
+          favorites = [];
+          updateFavoritesCount();
+          updateFavoritesDropdown();
+          saveFavorites();
+          
+          showSweetAlert('success', 'Your favorites list has been cleared!');
+        }
+      }
+      
+      // حفظ المفضلة في localStorage
+      function saveFavorites(){
+        localStorage.setItem('favorites', JSON.stringify(favorites));
+      }
+      
+      // المتابعة إلى الدفع
+      function proceedToCheckout() {
+        if (cart.length === 0) {
+          showSweetAlert('warning', 'Your cart is empty!');
+          return;
+        }
+        
+        // حفظ السلة مؤقتًا للدفع
+        localStorage.setItem('checkoutCart', JSON.stringify(cart));
+        
+        // الانتقال إلى صفحة الدفع
+        window.location.href = "checkout.html";
+      }
+      
+      // وظيفة زر العودة للأعلى
+      function setupScrollButton() {
+        const scrollBtn = document.getElementById("scrollBtn");
+        
+        // إظهار الزر عند التمرير لأسفل
+        window.onscroll = function() {
+          if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollBtn.style.display = "block";
+          } else {
+            scrollBtn.style.display = "none";
+          }
+        };
+        
+        // عند النقر على الزر، العودة للأعلى
+        scrollBtn.addEventListener("click", function() {
+          window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+          });
+        });
+      }
+
+      // تهيئة الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        loadData();
+        setupScrollButton();
+        
+        // عرض/إخفاء السلة في القائمة
+        document.getElementById('cartButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isCartOpen = !isCartOpen;
+          document.getElementById('cartDropdown').classList.toggle('show');
+          
+          // إغلاق المفضلة إذا كانت مفتوحة
+          if (isFavoritesOpen) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+        
+        // عرض/إخفاء المفضلة في القائمة
+        document.getElementById('favoritesButton').addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          isFavoritesOpen = !isFavoritesOpen;
+          document.getElementById('favoritesDropdown').classList.toggle('show');
+          
+          // إغلاق السلة إذا كانت مفتوحة
+          if (isCartOpen) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+        });
+        
+        // إغلاق السلة والمفضلة عند النقر خارجها
+        document.addEventListener('click', function(e) {
+          if (!e.target.closest('.cart-dropdown')) {
+            document.getElementById('cartDropdown').classList.remove('show');
+            isCartOpen = false;
+          }
+          
+          if (!e.target.closest('.favorites-dropdown')) {
+            document.getElementById('favoritesDropdown').classList.remove('show');
+            isFavoritesOpen = false;
+          }
+        });
+      });
+    </script>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+    
+  </body>
+</html>
